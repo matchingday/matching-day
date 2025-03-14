@@ -1,236 +1,162 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore-compat.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인재 추천 시스템</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        body {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        .filter-section {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-        
-        .filter-box {
-            width: 30%;
-            border: 2px solid #000;
-            padding: 15px;
-            background-color: white;
-        }
-        
-        .filter-box h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .checkbox-item {
-            margin-right: 15px;
-            margin-bottom: 10px;
-        }
-        
-        .candidate-section {
-            margin-bottom: 20px;
-        }
-        
-        .candidate-box {
-            width: 100%;
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 15px;
-            background-color: white;
-        }
-        
-        .candidate-info {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .candidate-details {
-            flex: 1;
-        }
-        
-        .candidate-name {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .candidate-skills {
-            color: #555;
-            margin-bottom: 5px;
-        }
-        
-        .candidate-tags span {
-            display: inline-block;
-            background-color: #eee;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 5px;
-            font-size: 13px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase 연동 사이트</title>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      padding: 20px; 
+      background-color: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #content { 
+      border: 1px solid #ccc; 
+      padding: 15px; 
+      margin-bottom: 20px;
+      background-color: white;
+      border-radius: 8px;
+      min-height: 100px;
+    }
+    #adminForm { 
+      display: none; 
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    button { 
+      padding: 10px 15px; 
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #006abc;
+    }
+    #saveBtn {
+      background-color: #28a745;
+    }
+    #saveBtn:hover {
+      background-color: #218838;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-    <h1>인재 추천 시스템</h1>
+  <div class="container">
+    <h1>Firebase 연동 사이트</h1>
     
-    <!-- 필터 섹션 (1, 2, 3번) -->
-    <div class="filter-section">
-        <!-- 1번: 주요기술 체크박스 -->
-        <div class="filter-box">
-            <h3>주요기술</h3>
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="js" name="main-skill" value="JavaScript">
-                    <label for="js">JavaScript</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="java" name="main-skill" value="Java">
-                    <label for="java">Java</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="python" name="main-skill" value="Python">
-                    <label for="python">Python</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="csharp" name="main-skill" value="C#">
-                    <label for="csharp">C#</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="html" name="main-skill" value="HTML/CSS">
-                    <label for="html">HTML/CSS</label>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 2번: 트렌드기술 체크박스 -->
-        <div class="filter-box">
-            <h3>트렌드기술</h3>
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="react" name="trend-skill" value="React">
-                    <label for="react">React</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="ai" name="trend-skill" value="AI/ML">
-                    <label for="ai">AI/ML</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="cloud" name="trend-skill" value="Cloud">
-                    <label for="cloud">Cloud</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="devops" name="trend-skill" value="DevOps">
-                    <label for="devops">DevOps</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="blockchain" name="trend-skill" value="Blockchain">
-                    <label for="blockchain">Blockchain</label>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 3번: 자격증 체크박스 -->
-        <div class="filter-box">
-            <h3>자격증</h3>
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="aws" name="certification" value="AWS">
-                    <label for="aws">AWS 자격증</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="azure" name="certification" value="Azure">
-                    <label for="azure">Azure 자격증</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="ccna" name="certification" value="CCNA">
-                    <label for="ccna">CCNA</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="sqld" name="certification" value="SQLD">
-                    <label for="sqld">SQLD</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="engineer" name="certification" value="정보처리기사">
-                    <label for="engineer">정보처리기사</label>
-                </div>
-            </div>
-        </div>
+    <!-- 콘텐츠 표시 영역 -->
+    <div id="content">로딩 중...</div>
+    
+    <!-- 관리자 전용 인터페이스 -->
+    <div id="adminForm">
+      <textarea id="adminText" rows="5"></textarea>
+      <button id="saveBtn">저장</button>
     </div>
     
-    <!-- 인재 정보 섹션 (4, 5번) -->
-    <div class="candidate-section">
-        <!-- 4번: 첫 번째 인재 정보 -->
-        <div class="candidate-box">
-            <div class="candidate-info">
-                <div class="candidate-details">
-                    <div class="candidate-name">홍길동</div>
-                    <div class="candidate-skills">경력 3년 | Java, Spring, JavaScript</div>
-                    <div class="candidate-tags">
-                        <span>AWS 자격증</span>
-                        <span>정보처리기사</span>
-                        <span>SQLD</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- 관리자 모드 전환 버튼 -->
+    <button id="adminToggle">관리자 모드 전환</button>
+  </div>
+
+  <script>
+    // Firebase 설정 정보
+    const firebaseConfig = {
+      apiKey: "AIza5yBIQuHRzKQ3HGS-XQ93C9jY1C_EfKmjCcQ",
+      authDomain: "matchingday-c0c83.firebaseapp.com",
+      projectId: "matchingday-c0c83",
+      storageBucket: "matchingday-c0c83.firebasestorage.app",
+      messagingSenderId: "713406774583",
+      appId: "1:713406774583:web:c553e7827eef5b85bc6eb2",
+      measurementId: "G-73MV68XNF9"
+    };
+
+    // Firebase 초기화
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // HTML 요소 참조
+    const contentDiv = document.getElementById('content');
+    const adminForm = document.getElementById('adminForm');
+    const adminText = document.getElementById('adminText');
+    const saveBtn = document.getElementById('saveBtn');
+    const adminToggle = document.getElementById('adminToggle');
+
+    // Firestore 컬렉션 및 문서 참조 (pages 컬렉션의 pageContent 문서)
+    const contentDocRef = db.collection('pages').doc('pageContent');
+
+    // 실시간 데이터 읽기
+    contentDocRef.onSnapshot(doc => {
+      if (doc.exists) {
+        const data = doc.data();
+        contentDiv.textContent = data.text;
+        adminText.value = data.text;
+      } else {
+        contentDiv.textContent = '콘텐츠가 없습니다. 관리자 모드에서 내용을 추가해주세요.';
         
-        <!-- 5번: 두 번째 인재 정보 -->
-        <div class="candidate-box">
-            <div class="candidate-info">
-                <div class="candidate-details">
-                    <div class="candidate-name">김철수</div>
-                    <div class="candidate-skills">경력 5년 | Python, React, Cloud</div>
-                    <div class="candidate-tags">
-                        <span>Azure 자격증</span>
-                        <span>AI/ML 프로젝트 경험</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // 간단한 필터링 기능 구현
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', filterCandidates);
+        // 문서가 존재하지 않으면 초기 데이터 생성 (선택 사항)
+        contentDocRef.set({
+          text: "여기에 텍스트 내용을 입력하세요."
+        }).then(() => {
+          console.log("초기 문서가 생성되었습니다.");
+        }).catch(error => {
+          console.error("문서 생성 오류:", error);
         });
-        
-        function filterCandidates() {
-            // 모든 체크된 값들 수집
-            const checkedValues = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-                checkedValues.push(checkbox.value.toLowerCase());
-            });
-            
-            // 인재 카드들 필터링
-            document.querySelectorAll('.candidate-box').forEach(card => {
-                const cardText = card.textContent.toLowerCase();
-                const shouldShow = checkedValues.length === 0 || 
-                                  checkedValues.some(value => cardText.includes(value));
-                
-                card.style.display = shouldShow ? 'block' : 'none';
-            });
-        }
-    </script>
+      }
+    }, error => {
+      console.error("Firestore 데이터 읽기 오류:", error);
+      contentDiv.textContent = "데이터를 불러오는 중 오류가 발생했습니다.";
+    });
+
+    // 관리자 모드 토글
+    let isAdmin = false;
+    adminToggle.addEventListener('click', () => {
+      isAdmin = !isAdmin;
+      adminForm.style.display = isAdmin ? 'block' : 'none';
+      adminToggle.textContent = isAdmin ? '관리자 모드 끄기' : '관리자 모드 전환';
+    });
+
+    // 저장 버튼 클릭 시 Firestore 업데이트
+    saveBtn.addEventListener('click', () => {
+      const newText = adminText.value;
+      
+      // 빈 텍스트 검증
+      if (!newText.trim()) {
+        alert("내용을 입력해주세요.");
+        return;
+      }
+      
+      // Firestore에 데이터 저장
+      contentDocRef.set({
+        text: newText,
+        updatedAt: new Date() // 타임스탬프 추가 (선택사항)
+      })
+      .then(() => {
+        alert('내용이 성공적으로 업데이트되었습니다.');
+      })
+      .catch(error => {
+        console.error("업데이트 오류:", error);
+        alert('업데이트 중 오류가 발생했습니다.');
+      });
+    });
+  </script>
 </body>
 </html>
