@@ -1,92 +1,63 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개발자 매칭데이</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        body {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        .candidate-section {
-            margin-bottom: 20px;
-        }
-        
-        .candidate-box {
-            width: 100%;
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 15px;
-            background-color: white;
-        }
-        
-        .candidate-info {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .candidate-details {
-            flex: 1;
-        }
-        
-        .candidate-name {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .candidate-tags span {
-            display: inline-block;
-            background-color: #eee;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 5px;
-            font-size: 13px;
-        }
-    </style>
-</head>
-<body>
-    <h1>개발자 매칭데이</h1>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개발자 매칭데이</title>
+<style>
+* {
+box-sizing: border-box;
+font-family: 'Noto Sans KR', sans-serif;
+}
 
-    <!-- 인재 정보 섹션 -->
-    <div class="candidate-section">
-      <!-- JavaScript가 이곳에 동적으로 콘텐츠를 추가 -->
-    </div>
+body {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+background-color: #f5f5f5;
+}
 
-    <!-- JavaScript 코드 -->
-    <script>
-      fetch('data/form-responses.json') // JSON 파일 경로
-      .then(response => response.json())
-      .then(data => {
-          const candidateSection = document.querySelector('.candidate-section');
-          candidateSection.innerHTML = ''; // 기존 내용을 초기화
+.filter-section {
+display: flex;
+justify-content: space-between;
+margin-bottom: 30px;
+}
 
-          data.forEach(candidate => {
-              const candidateBox = document.createElement('div');
-              candidateBox.className = 'candidate-box';
+.filter-box {
+width: 30%;
+border: 2px solid #000;
+padding: 15px;
+background-color: white;
+}
 
-              candidateBox.innerHTML = `
-                  <div class="candidate-info">
-                      <div class="candidate-details">
-                          <div class="candidate-name">${candidate['이름']}</div>
-                          <div class="candidate-tags">
-                              ${candidate['주요 기술'].split(',').map(tag => `<span>${tag.trim()}</span>`).join('')}
-                          </div>
-                      </div>
-                  </div>`;
-              candidateSection.appendChild(candidateBox);
-          });
-      })
-      .catch(error => console.error('Error loading data:', error));
-    </script>
-</body>
-</html>
+.filter-box h3 {
+margin-top: 0;
+margin-bottom: 15px;
+font-size: 16px;
+}
+
+.checkbox-group {
+display: flex;
+flex-wrap: wrap;
+}
+
+.checkbox-item {
+margin-right: 15px;
+margin-bottom: 10px;
+}
+
+.candidate-section {
+margin-bottom: 20px;
+}
+
+.candidate-box {
+width: 100%;
+border: 2px solid #000;
+padding: 20px;
+margin-bottom: 15px;
+background-color: white;
+}
+
+.candidate-info {
+display: flex;
