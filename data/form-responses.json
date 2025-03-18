@@ -1,0 +1,12 @@
+[
+  {
+    "이름": "홍길동",
+    "주요 기술": "Java, Spring, JavaScript",
+    "자격증": "AWS 자격증, 정보처리기사"
+  },
+  {
+    "이름": "김철수",
+    "주요 기술": "Python, React, Cloud",
+    "자격증": "Azure 자격증, SQLD"
+  }
+]
