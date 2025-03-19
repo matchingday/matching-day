@@ -68,6 +68,14 @@
             margin-bottom: 15px;
             background-color: white;
             border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .candidate-box:hover {
+            background-color: #f0f8ff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
         .candidate-name {
@@ -95,6 +103,12 @@
             font-size: 13px;
         }
 
+        .candidate-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .filter-section {
                 flex-direction: column;
@@ -108,7 +122,7 @@
     </style>
 </head>
 <body>
-    <h1>개발자 매칭데이</h1>
+    <h1>개발자 매칭데이 : 올바른 인재를 원하다 #서울 #경기 #신입</h1>
 
     <!-- 필터 섹션 -->
     <div class="filter-section">
@@ -205,43 +219,49 @@
     <!-- 인재 정보 섹션 -->
     <div class="candidate-section">
         <!-- 첫 번째 인재 정보 -->
-        <div class="candidate-box" data-age="23" data-tech="Java,Spring,JavaScript" data-education="학사">
-            <div class="candidate-name">홍길동</div>
-            <div class="candidate-skills">열정적인 개발자</div>
-            <div class="candidate-tags">
-                <span>23세</span>
-                <span>학사</span>
-                <span>Java</span>
-                <span>Spring</span>
-                <span>JavaScript</span>
+        <a href="hongGilDong.html" class="candidate-link">
+            <div class="candidate-box" data-age="23" data-tech="Java,Spring,JavaScript" data-education="학사">
+                <div class="candidate-name">홍길동</div>
+                <div class="candidate-skills">열정적인 개발자</div>
+                <div class="candidate-tags">
+                    <span>23세</span>
+                    <span>학사</span>
+                    <span>Java</span>
+                    <span>Spring</span>
+                    <span>JavaScript</span>
+                </div>
             </div>
-        </div>
+        </a>
 
         <!-- 두 번째 인재 정보 -->
-        <div class="candidate-box" data-age="29" data-tech="Python,React,Cloud" data-education="학사">
-            <div class="candidate-name">김철수</div>
-            <div class="candidate-skills">문제해결 전문가</div>
-            <div class="candidate-tags">
-                <span>29세</span>
-                <span>학사</span>
-                <span>Python</span>
-                <span>React</span>
-                <span>Cloud</span>
+        <a href="kimChulSoo.html" class="candidate-link">
+            <div class="candidate-box" data-age="29" data-tech="Python,React,Cloud" data-education="학사">
+                <div class="candidate-name">김철수</div>
+                <div class="candidate-skills">문제해결 전문가</div>
+                <div class="candidate-tags">
+                    <span>29세</span>
+                    <span>학사</span>
+                    <span>Python</span>
+                    <span>React</span>
+                    <span>Cloud</span>
+                </div>
             </div>
-        </div>
+        </a>
 
         <!-- 세 번째 인재 정보 -->
-        <div class="candidate-box" data-age="32" data-tech="Java,JSP,Database" data-education="전문학사">
-            <div class="candidate-name">이지은</div>
-            <div class="candidate-skills">백엔드 개발 장인</div>
-            <div class="candidate-tags">
-                <span>32세</span>
-                <span>전문학사</span>
-                <span>Java</span>
-                <span>JSP</span>
-                <span>Database</span>
+        <a href="leeJiEun.html" class="candidate-link">
+            <div class="candidate-box" data-age="32" data-tech="Java,JSP,Database" data-education="전문학사">
+                <div class="candidate-name">이지은</div>
+                <div class="candidate-skills">백엔드 개발 장인</div>
+                <div class="candidate-tags">
+                    <span>32세</span>
+                    <span>전문학사</span>
+                    <span>Java</span>
+                    <span>JSP</span>
+                    <span>Database</span>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <script>
@@ -288,7 +308,10 @@
                 }
                 
                 // 모든 필터 조건 적용
-                card.style.display = (matchesTech && matchesEducation && matchesAge) ? 'block' : 'none';
+                const parentLink = card.closest('.candidate-link');
+                if (parentLink) {
+                    parentLink.style.display = (matchesTech && matchesEducation && matchesAge) ? 'block' : 'none';
+                }
             });
         }
     </script>
