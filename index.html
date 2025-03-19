@@ -212,6 +212,7 @@
                 <span>AWS 자격증</span>
                 <span>정보처리기사</span>
                 <span>23세</span>
+                <span>학사</span>
             </div>
         </div>
 
@@ -223,17 +224,19 @@
                 <span>Azure 자격증</span>
                 <span>AI/ML 프로젝트 경험</span>
                 <span>29세</span>
+                <span>학사</span>
             </div>
         </div>
 
         <!-- 세 번째 인재 정보 -->
-        <div class="candidate-box" data-age="32" data-tech="Java,JSP,Database" data-education="학사">
+        <div class="candidate-box" data-age="32" data-tech="Java,JSP,Database" data-education="전문학사">
             <div class="candidate-name">이지은</div>
             <div class="candidate-skills">경력 7년 | Java, JSP, Database</div>
             <div class="candidate-tags">
                 <span>정보처리기사</span>
                 <span>SQLD</span>
                 <span>32세</span>
+                <span>전문학사</span>
             </div>
         </div>
     </div>
@@ -255,6 +258,7 @@
             document.querySelectorAll('.candidate-box').forEach(card => {
                 const cardText = card.textContent.toLowerCase();
                 const candidateAge = parseInt(card.getAttribute('data-age'));
+                const candidateEducation = card.getAttribute('data-education').toLowerCase();
                 
                 // 기술 필터 체크
                 const matchesTech = selectedTech.length === 0 || 
@@ -262,7 +266,7 @@
                 
                 // 학위 필터 체크
                 const matchesEducation = selectedEducation.length === 0 || 
-                    selectedEducation.some(edu => cardText.includes(edu.toLowerCase()));
+                    selectedEducation.some(edu => candidateEducation.includes(edu.toLowerCase()));
                 
                 // 나이 필터 체크
                 let matchesAge = true;
