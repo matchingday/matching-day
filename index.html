@@ -209,8 +209,6 @@
             <div class="candidate-name">홍길동</div>
             <div class="candidate-skills">경력 3년 | Java, Spring, JavaScript</div>
             <div class="candidate-tags">
-                <span>AWS 자격증</span>
-                <span>정보처리기사</span>
                 <span>23세</span>
                 <span>학사</span>
             </div>
@@ -221,8 +219,6 @@
             <div class="candidate-name">김철수</div>
             <div class="candidate-skills">경력 5년 | Python, React, Cloud</div>
             <div class="candidate-tags">
-                <span>Azure 자격증</span>
-                <span>AI/ML 프로젝트 경험</span>
                 <span>29세</span>
                 <span>학사</span>
             </div>
@@ -233,8 +229,6 @@
             <div class="candidate-name">이지은</div>
             <div class="candidate-skills">경력 7년 | Java, JSP, Database</div>
             <div class="candidate-tags">
-                <span>정보처리기사</span>
-                <span>SQLD</span>
                 <span>32세</span>
                 <span>전문학사</span>
             </div>
@@ -264,9 +258,15 @@
                 const matchesTech = selectedTech.length === 0 || 
                     selectedTech.some(tech => cardText.includes(tech.toLowerCase()));
                 
-                // 학위 필터 체크
+                // 학위 필터 체크 - 정확한 일치 확인
                 const matchesEducation = selectedEducation.length === 0 || 
-                    selectedEducation.some(edu => candidateEducation.includes(edu.toLowerCase()));
+                    selectedEducation.some(edu => {
+                        // 정확한 학위 일치 검사
+                        if (edu === "고등학교 졸업" && candidateEducation === "고등학교 졸업") return true;
+                        if (edu === "전문학사" && candidateEducation === "전문학사") return true;
+                        if (edu === "학사" && candidateEducation === "학사") return true;
+                        return false;
+                    });
                 
                 // 나이 필터 체크
                 let matchesAge = true;
