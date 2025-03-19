@@ -20,17 +20,19 @@
         h1 {
             text-align: center;
             margin-bottom: 30px;
+            font-size: 24px;
         }
 
         .filter-section {
             display: flex;
             justify-content: space-between;
             margin-bottom: 30px;
+            gap: 15px;
         }
 
         .filter-box {
-            width: 30%;
-            border: 2px solid #000;
+            width: 32%;
+            border: 1px solid #ccc;
             padding: 15px;
             background-color: white;
         }
@@ -39,6 +41,7 @@
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 16px;
+            font-weight: bold;
         }
 
         .checkbox-group {
@@ -47,8 +50,9 @@
         }
 
         .checkbox-item {
-            margin-right: 15px;
-            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
         .candidate-section {
@@ -57,7 +61,7 @@
 
         .candidate-box {
             width: 100%;
-            border: 2px solid #000;
+            border: 1px solid #ccc;
             padding: 20px;
             margin-bottom: 15px;
             background-color: white;
@@ -115,43 +119,75 @@
             <h3>주요기술</h3>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="js" name="main-skill" value="JavaScript">
-                    <label for="js">JavaScript</label>
+                    <input type="checkbox" id="javascript" name="tech" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="java" name="main-skill" value="Java">
+                    <input type="checkbox" id="java" name="tech" value="Java">
                     <label for="java">Java</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="python" name="main-skill" value="Python">
+                    <input type="checkbox" id="python" name="tech" value="Python">
                     <label for="python">Python</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="csharp" name="main-skill" value="C#">
-                    <label for="csharp">C#</label>
+                    <input type="checkbox" id="jsp" name="tech" value="JSP">
+                    <label for="jsp">JSP</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="html" name="main-skill" value="HTML/CSS">
+                    <input type="checkbox" id="html" name="tech" value="HTML">
                     <label for="html">HTML/CSS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="database" name="tech" value="Database">
+                    <label for="database">Database</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="react" name="tech" value="React">
+                    <label for="react">React</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="frontend" name="tech" value="Front-end">
+                    <label for="frontend">Front-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="backend" name="tech" value="Back-end">
+                    <label for="backend">Back-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spring" name="tech" value="Spring">
+                    <label for="spring">Spring</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="django" name="tech" value="Django">
+                    <label for="django">Django</label>
                 </div>
             </div>
         </div>
 
-        <!-- 자격증 필터 -->
+        <!-- 학위 필터 -->
         <div class="filter-box">
-            <h3>자격증</h3>
+            <h3>학위</h3>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="aws" name="certification" value="AWS">
+                    <input type="checkbox" id="highschool" name="education" value="고등학교 졸업">
+                    <label for="highschool">고등학교 졸업</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="associate" name="education" value="전문학사">
+                    <label for="associate">전문학사</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bachelor" name="education" value="학사">
+                    <label for="bachelor">학사</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="aws" name="certification" value="AWS 자격증">
                     <label for="aws">AWS 자격증</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="azure" name="certification" value="Azure">
+                    <input type="checkbox" id="azure" name="certification" value="Azure 자격증">
                     <label for="azure">Azure 자격증</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="ccna" name="certification" value="CCNA">
-                    <label for="ccna">CCNA</label>
                 </div>
                 <div class="checkbox-item">
                     <input type="checkbox" id="sqld" name="certification" value="SQLD">
@@ -164,17 +200,21 @@
             </div>
         </div>
 
-        <!-- 추천 필터 -->
+        <!-- 나이 필터 -->
         <div class="filter-box">
-            <h3>추천</h3>
+            <h3>나이</h3>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="instructor" name="recommendation" value="강사">
-                    <label for="instructor">강사 추천</label>
+                    <input type="checkbox" id="under25" name="age" value="25세 이하">
+                    <label for="under25">25세 이하</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="employment" name="recommendation" value="취업부서">
-                    <label for="employment">취업부서 추천</label>
+                    <input type="checkbox" id="under30" name="age" value="30세 이하">
+                    <label for="under30">30세 이하</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under35" name="age" value="35세 이하">
+                    <label for="under35">35세 이하</label>
                 </div>
             </div>
         </div>
@@ -191,7 +231,7 @@
                     <div class="candidate-tags">
                         <span>AWS 자격증</span>
                         <span>정보처리기사</span>
-                        <span>SQLD</span>
+                        <span>25세 이하</span>
                     </div>
                 </div>
             </div>
@@ -205,7 +245,23 @@
                     <div class="candidate-skills">경력 5년 | Python, React, Cloud</div>
                     <div class="candidate-tags">
                         <span>Azure 자격증</span>
-                        <span>AI/ML 프로젝트 경험</span>
+                        <span>학사</span>
+                        <span>30세 이하</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 세 번째 인재 정보 -->
+        <div class="candidate-box">
+            <div class="candidate-info">
+                <div class="candidate-details">
+                    <div class="candidate-name">장미영</div>
+                    <div class="candidate-skills">경력 2년 | Front-end, React, JavaScript</div>
+                    <div class="candidate-tags">
+                        <span>전문학사</span>
+                        <span>SQLD</span>
+                        <span>25세 이하</span>
                     </div>
                 </div>
             </div>
@@ -230,7 +286,7 @@
             document.querySelectorAll('.candidate-box').forEach(card => {
                 const cardText = card.textContent.toLowerCase();
                 const shouldShow = checkedValues.length === 0 ||
-                    checkedValues.some(value => cardText.includes(value));
+                    checkedValues.some(value => cardText.includes(value.toLowerCase()));
 
                 card.style.display = shouldShow ? 'block' : 'none';
             });
