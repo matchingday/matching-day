@@ -1,91 +1,282 @@
-<!-- 필터 섹션 -->
-<div class="filter-section">
-    <!-- 주요기술 필터 -->
-    <div class="filter-box">
-        <h3>주요기술</h3>
-        <div class="checkbox-group">
-            <div class="checkbox-item">
-                <input type="checkbox" id="javascript" name="tech" value="JavaScript">
-                <label for="javascript">JavaScript</label>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발자 매칭데이</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .filter-box {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        .filter-box h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .checkbox-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .candidate-section {
+            margin-bottom: 30px;
+        }
+
+        .candidate-box {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        .candidate-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .candidate-skills {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .candidate-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .candidate-tags span {
+            display: inline-block;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-section {
+                flex-direction: column;
+            }
+            
+            .filter-box {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>개발자 매칭데이</h1>
+
+    <!-- 필터 섹션 -->
+    <div class="filter-section">
+        <!-- 주요기술 필터 -->
+        <div class="filter-box">
+            <h3>주요기술</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="javascript" name="tech" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="java" name="tech" value="Java">
+                    <label for="java">Java</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="python" name="tech" value="Python">
+                    <label for="python">Python</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="jsp" name="tech" value="JSP">
+                    <label for="jsp">JSP</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="html" name="tech" value="HTML/CSS">
+                    <label for="html">HTML/CSS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="database" name="tech" value="Database">
+                    <label for="database">Database</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="react" name="tech" value="React">
+                    <label for="react">React</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="frontend" name="tech" value="Front-end">
+                    <label for="frontend">Front-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="backend" name="tech" value="Back-end">
+                    <label for="backend">Back-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spring" name="tech" value="Spring">
+                    <label for="spring">Spring</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="django" name="tech" value="Django">
+                    <label for="django">Django</label>
+                </div>
             </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="java" name="tech" value="Java">
-                <label for="java">Java</label>
+        </div>
+
+        <!-- 학위 필터 -->
+        <div class="filter-box">
+            <h3>학위</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="highschool" name="education" value="고등학교 졸업">
+                    <label for="highschool">고등학교 졸업</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="associate" name="education" value="전문학사">
+                    <label for="associate">전문학사</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bachelor" name="education" value="학사">
+                    <label for="bachelor">학사</label>
+                </div>
             </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="python" name="tech" value="Python">
-                <label for="python">Python</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="jsp" name="tech" value="JSP">
-                <label for="jsp">JSP</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="html" name="tech" value="HTML/CSS">
-                <label for="html">HTML/CSS</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="database" name="tech" value="Database">
-                <label for="database">Database</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="react" name="tech" value="React">
-                <label for="react">React</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="frontend" name="tech" value="Front-end">
-                <label for="frontend">Front-end</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="backend" name="tech" value="Back-end">
-                <label for="backend">Back-end</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="spring" name="tech" value="Spring">
-                <label for="spring">Spring</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="django" name="tech" value="Django">
-                <label for="django">Django</label>
+        </div>
+
+        <!-- 연령 필터 -->
+        <div class="filter-box">
+            <h3>연령</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under25" name="age" value="25세 이하">
+                    <label for="under25">25세 이하</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under30" name="age" value="30세 이하">
+                    <label for="under30">30세 이하</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under35" name="age" value="35세 이하">
+                    <label for="under35">35세 이하</label>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 학위 필터 (자격증에서 변경) -->
-    <div class="filter-box">
-        <h3>학위</h3>
-        <div class="checkbox-group">
-            <div class="checkbox-item">
-                <input type="checkbox" id="highschool" name="education" value="고등학교 졸업">
-                <label for="highschool">고등학교 졸업</label>
+    <!-- 인재 정보 섹션 -->
+    <div class="candidate-section">
+        <!-- 첫 번째 인재 정보 -->
+        <div class="candidate-box" data-age="23" data-tech="Java,Spring,JavaScript" data-education="학사">
+            <div class="candidate-name">홍길동</div>
+            <div class="candidate-skills">경력 3년 | Java, Spring, JavaScript</div>
+            <div class="candidate-tags">
+                <span>AWS 자격증</span>
+                <span>정보처리기사</span>
+                <span>23세</span>
             </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="associate" name="education" value="전문학사">
-                <label for="associate">전문학사</label>
+        </div>
+
+        <!-- 두 번째 인재 정보 -->
+        <div class="candidate-box" data-age="29" data-tech="Python,React,Cloud" data-education="석사">
+            <div class="candidate-name">김철수</div>
+            <div class="candidate-skills">경력 5년 | Python, React, Cloud</div>
+            <div class="candidate-tags">
+                <span>Azure 자격증</span>
+                <span>AI/ML 프로젝트 경험</span>
+                <span>29세</span>
             </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="bachelor" name="education" value="학사">
-                <label for="bachelor">학사</label>
+        </div>
+
+        <!-- 세 번째 인재 정보 -->
+        <div class="candidate-box" data-age="32" data-tech="Java,JSP,Database" data-education="학사">
+            <div class="candidate-name">이지은</div>
+            <div class="candidate-skills">경력 7년 | Java, JSP, Database</div>
+            <div class="candidate-tags">
+                <span>정보처리기사</span>
+                <span>SQLD</span>
+                <span>32세</span>
             </div>
         </div>
     </div>
 
-    <!-- 연령 필터 (변경 없음) -->
-    <div class="filter-box">
-        <h3>연령</h3>
-        <div class="checkbox-group">
-            <div class="checkbox-item">
-                <input type="checkbox" id="under25" name="age" value="25세 이하">
-                <label for="under25">25세 이하</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="under30" name="age" value="30세 이하">
-                <label for="under30">30세 이하</label>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="under35" name="age" value="35세 이하">
-                <label for="under35">35세 이하</label>
-            </div>
-        </div>
-    </div>
-</div>
+    <script>
+        // 체크박스 이벤트 리스너 추가
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', filterCandidates);
+        });
+
+        // 필터링 함수
+        function filterCandidates() {
+            // 선택된 필터 값 가져오기
+            const selectedTech = Array.from(document.querySelectorAll('input[name="tech"]:checked')).map(el => el.value.toLowerCase());
+            const selectedEducation = Array.from(document.querySelectorAll('input[name="education"]:checked')).map(el => el.value.toLowerCase());
+            const selectedAge = Array.from(document.querySelectorAll('input[name="age"]:checked'));
+            
+            // 인재 카드 필터링
+            document.querySelectorAll('.candidate-box').forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                const candidateAge = parseInt(card.getAttribute('data-age'));
+                
+                // 기술 필터 체크
+                const matchesTech = selectedTech.length === 0 || 
+                    selectedTech.some(tech => cardText.includes(tech.toLowerCase()));
+                
+                // 학위 필터 체크
+                const matchesEducation = selectedEducation.length === 0 || 
+                    selectedEducation.some(edu => cardText.includes(edu.toLowerCase()));
+                
+                // 나이 필터 체크
+                let matchesAge = true;
+                if (selectedAge.length > 0) {
+                    matchesAge = false;
+                    if (selectedAge.some(filter => filter.id === 'under25' && candidateAge <= 25)) matchesAge = true;
+                    if (selectedAge.some(filter => filter.id === 'under30' && candidateAge <= 30)) matchesAge = true;
+                    if (selectedAge.some(filter => filter.id === 'under35' && candidateAge <= 35)) matchesAge = true;
+                }
+                
+                // 모든 필터 조건 적용
+                card.style.display = (matchesTech && matchesEducation && matchesAge) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
