@@ -92,6 +92,64 @@
             margin: 0 5px;
             color: #d81b60;
         }
+        
+        /* 벚꽃 애니메이션 */
+        .blossom-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .blossom {
+            position: absolute;
+            background-color: #ffcad4;
+            border-radius: 150% 0 150% 0;
+            transform: rotate(45deg);
+            animation: falling linear infinite;
+        }
+        
+        .blossom:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #f8bbd0;
+            border-radius: 150% 0 150% 0;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes falling {
+            0% {
+                opacity: 0;
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(20px) rotate(45deg);
+            }
+            40% {
+                transform: translateX(-20px) rotate(90deg);
+            }
+            60% {
+                transform: translateX(20px) rotate(135deg);
+            }
+            80% {
+                transform: translateX(-20px) rotate(180deg);
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+                transform: translateX(20px) rotate(225deg);
+            }
+        }
 
         /* 개발자 카드 컨테이너 - 한 줄에 3개로 변경 */
         .developer-container {
@@ -132,10 +190,10 @@
             gap: 12px;
         }
 
-        /* 프로필 사진 */
+        /* 프로필 사진 - 크기 증가 */
         .profile-photo {
-            width: 90px;
-            height: 120px;
+            width: 120px; /* 사진 크기 증가 */
+            height: 150px; /* 사진 크기 증가 */
             background-color: #e0e0e0;
             border: 1px solid #ccc;
             flex-shrink: 0;
@@ -145,6 +203,7 @@
             justify-content: center;
             color: #666;
             font-size: 14px;
+            overflow: hidden;
         }
 
         /* 텍스트 정보 컨테이너 */
@@ -152,8 +211,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 120px; /* 사진 높이와 동일하게 설정 */
+            height: 150px; /* 사진 높이와 일치 */
             flex-grow: 1;
+            padding: 5px 0;
         }
 
         /* 이름 및 정보 스타일 */
@@ -171,13 +231,13 @@
             line-height: 1.3;
         }
 
-        /* 스크랩 버튼 */
+        /* 스크랩 버튼 - 하트 디자인 변경 */
         .card-scrap-btn {
             position: absolute;
             top: 10px;
             left: 10px;
-            width: 25px;
-            height: 25px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: 1px solid #ff6b6b;
             background-color: white;
@@ -185,14 +245,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 2;
+            transition: all 0.2s ease;
+        }
+
+        .card-scrap-btn:hover {
+            background-color: #fff0f0;
         }
 
         .card-scrap-btn.active {
             background-color: #ff6b6b;
             color: white;
+        }
+
+        /* 하트 아이콘 */
+        .heart-icon {
+            font-size: 16px;
+            line-height: 1;
         }
 
         /* 반응형 디자인 */
@@ -205,6 +276,15 @@
         @media (max-width: 600px) {
             .developer-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .profile-photo {
+                width: 100px;
+                height: 120px;
+            }
+            
+            .info-container {
+                height: 120px;
             }
         }
     </style>
@@ -253,10 +333,11 @@
         </div>
     </div>
 
-    <!-- 이달의 추천 인재 테마 -->
+    <!-- 이달의 추천 인재 테마 - 벚꽃 애니메이션 추가 -->
     <div class="monthly-theme">
         <h2><span class="cherry-blossom">🌸</span> 이달의 추천 인재 테마 <span class="cherry-blossom">🌸</span></h2>
         <p>2025년 봄, 프론트엔드 개발에 특화된 인재를 소개합니다!</p>
+        <div class="blossom-container" id="blossomContainer"></div>
     </div>
 
     <!-- 개발자 카드 섹션 - 수정된 레이아웃 -->
@@ -265,7 +346,7 @@
         <div class="developer-card" data-education="학사 졸업" data-age="28">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="1">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -283,7 +364,7 @@
         <div class="developer-card" data-education="전문학사 졸업" data-age="32">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="2">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -301,7 +382,7 @@
         <div class="developer-card" data-education="학사 졸업" data-age="24">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="3">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -319,7 +400,7 @@
         <div class="developer-card" data-education="고등학교 졸업" data-age="26">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="4">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -337,7 +418,7 @@
         <div class="developer-card" data-education="학사 졸업" data-age="29">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="5">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -355,7 +436,7 @@
         <div class="developer-card" data-education="전문학사 졸업" data-age="27">
             <span class="featured-badge">이달의 추천</span>
             <button class="card-scrap-btn" data-id="6">
-                <i class="scrap-icon">♡</i>
+                <span class="heart-icon">❤</span>
             </button>
             
             <div class="card-content">
@@ -426,15 +507,42 @@
             cardScrapBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     this.classList.toggle('active');
-                    const scrapIcon = this.querySelector('.scrap-icon');
+                    const heartIcon = this.querySelector('.heart-icon');
                     
                     if (this.classList.contains('active')) {
-                        scrapIcon.textContent = '♥'; // 채워진 하트
+                        heartIcon.style.color = 'white'; // 색상 변경
                     } else {
-                        scrapIcon.textContent = '♡'; // 빈 하트
+                        heartIcon.style.color = '#ff6b6b'; // 원래 색상으로
                     }
                 });
             });
+            
+            // 벚꽃 효과 생성
+            createCherryBlossoms();
+            
+            function createCherryBlossoms() {
+                const container = document.getElementById('blossomContainer');
+                const blossomCount = 15;
+                
+                for (let i = 0; i < blossomCount; i++) {
+                    const blossom = document.createElement('div');
+                    blossom.classList.add('blossom');
+                    
+                    // 랜덤 사이즈, 위치, 애니메이션 시간
+                    const size = Math.random() * 10 + 5; // 5-15px
+                    const left = Math.random() * 100; // 0-100%
+                    const animationDuration = Math.random() * 8 + 8; // 8-16s
+                    const animationDelay = Math.random() * 5; // 0-5s
+                    
+                    blossom.style.width = `${size}px`;
+                    blossom.style.height = `${size}px`;
+                    blossom.style.left = `${left}%`;
+                    blossom.style.animationDuration = `${animationDuration}s`;
+                    blossom.style.animationDelay = `${animationDelay}s`;
+                    
+                    container.appendChild(blossom);
+                }
+            }
         });
     </script>
 </body>
