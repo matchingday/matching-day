@@ -237,60 +237,9 @@
 <body>
     <h1>개발자 매칭데이</h1>
 
-    <!-- 필터 섹션 -->
+    <!-- 필터 섹션 - 주요기술 삭제함 -->
     <div class="filter-section">
-        <!-- 주요기술 필터 -->
-        <div class="filter-box">
-            <h3>주요기술</h3>
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="javascript" name="tech" value="JavaScript">
-                    <label for="javascript">JavaScript</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="java" name="tech" value="Java">
-                    <label for="java">Java</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="python" name="tech" value="Python">
-                    <label for="python">Python</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="jsp" name="tech" value="JSP">
-                    <label for="jsp">JSP</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="html" name="tech" value="HTML/CSS">
-                    <label for="html">HTML/CSS</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="database" name="tech" value="Database">
-                    <label for="database">Database</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="react" name="tech" value="React">
-                    <label for="react">React</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="frontend" name="tech" value="Front-end">
-                    <label for="frontend">Front-end</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="backend" name="tech" value="Back-end">
-                    <label for="backend">Back-end</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="spring" name="tech" value="Spring">
-                    <label for="spring">Spring</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="django" name="tech" value="Django">
-                    <label for="django">Django</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- 학위 필터 -->
+        <!-- 학위 필터 - 텍스트 변경 -->
         <div class="filter-box">
             <h3>학위</h3>
             <div class="checkbox-group">
@@ -299,17 +248,17 @@
                     <label for="highschool">고등학교 졸업</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="associate" name="education" value="전문학사">
-                    <label for="associate">전문학사</label>
+                    <input type="checkbox" id="associate" name="education" value="전문학사 졸업">
+                    <label for="associate">전문학사 졸업</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="bachelor" name="education" value="학사">
-                    <label for="bachelor">학사</label>
+                    <input type="checkbox" id="bachelor" name="education" value="학사 졸업">
+                    <label for="bachelor">학사 졸업</label>
                 </div>
             </div>
         </div>
 
-        <!-- 연령 필터 -->
+        <!-- 연령 필터 - 선택지 변경 -->
         <div class="filter-box">
             <h3>연령</h3>
             <div class="checkbox-group">
@@ -322,8 +271,8 @@
                     <label for="under30">30세 이하</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="under35" name="age" value="35세 이하">
-                    <label for="under35">35세 이하</label>
+                    <input type="checkbox" id="over31" name="age" value="31세 이상">
+                    <label for="over31">31세 이상</label>
                 </div>
             </div>
         </div>
@@ -339,11 +288,11 @@
     <!-- 개발자 카드 섹션 -->
     <div class="developer-container">
         <!-- 개발자 카드 1 -->
-        <div class="developer-card" data-tech="JavaScript,React,Node.js" data-education="학사" data-age="28">
+        <div class="developer-card" data-tech="JavaScript,React,Node.js" data-education="학사 졸업" data-age="28">
             <h3 class="developer-name">홍길동</h3>
             <div class="developer-details">
                 <p>주요기술: JavaScript, React, Node.js</p>
-                <p>학력: 학사</p>
+                <p>학력: 학사 졸업</p>
                 <p>연령: 28세</p>
             </div>
             <div class="card-buttons">
@@ -366,11 +315,11 @@
         </div>
 
         <!-- 개발자 카드 2 -->
-        <div class="developer-card" data-tech="Java,Spring,Oracle" data-education="전문학사" data-age="32">
+        <div class="developer-card" data-tech="Java,Spring,Oracle" data-education="전문학사 졸업" data-age="32">
             <h3 class="developer-name">김철수</h3>
             <div class="developer-details">
                 <p>주요기술: Java, Spring, Oracle</p>
-                <p>학력: 전문학사</p>
+                <p>학력: 전문학사 졸업</p>
                 <p>연령: 32세</p>
             </div>
             <div class="card-buttons">
@@ -393,11 +342,11 @@
         </div>
 
         <!-- 개발자 카드 3 -->
-        <div class="developer-card" data-tech="Python,Django,MySQL" data-education="학사" data-age="24">
+        <div class="developer-card" data-tech="Python,Django,MySQL" data-education="학사 졸업" data-age="24">
             <h3 class="developer-name">이영희</h3>
             <div class="developer-details">
                 <p>주요기술: Python, Django, MySQL</p>
-                <p>학력: 학사</p>
+                <p>학력: 학사 졸업</p>
                 <p>연령: 24세</p>
             </div>
             <div class="card-buttons">
@@ -434,21 +383,16 @@
             // 필터링 함수
             function filterDevelopers() {
                 // 선택된 필터 값들 수집
-                const selectedTechs = getSelectedValues('tech');
                 const selectedEducation = getSelectedValues('education');
                 const selectedAges = getSelectedValues('age');
                 
                 // 모든 개발자 카드 순회
                 developerCards.forEach(card => {
                     // 카드에서 데이터 속성 가져오기
-                    const cardTech = card.getAttribute('data-tech');
                     const cardEducation = card.getAttribute('data-education');
                     const cardAge = parseInt(card.getAttribute('data-age'));
                     
                     // 필터 조건 확인
-                    const techMatch = selectedTechs.length === 0 || 
-                                     selectedTechs.some(tech => cardTech.includes(tech));
-                                     
                     const educationMatch = selectedEducation.length === 0 || 
                                           selectedEducation.includes(cardEducation);
                                           
@@ -456,12 +400,12 @@
                                     selectedAges.some(age => {
                                         if (age === '25세 이하') return cardAge <= 25;
                                         if (age === '30세 이하') return cardAge <= 30;
-                                        if (age === '35세 이하') return cardAge <= 35;
+                                        if (age === '31세 이상') return cardAge >= 31;
                                         return false;
                                     });
                     
                     // 모든 조건을 만족하면 카드 표시, 아니면 숨김
-                    if (techMatch && educationMatch && ageMatch) {
+                    if (educationMatch && ageMatch) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
