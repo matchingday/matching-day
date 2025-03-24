@@ -59,67 +59,6 @@
             font-size: 14px;
         }
 
-        /* 상단 버튼 스타일 */
-        .top-buttons {
-            display: flex;
-            margin-bottom: 30px;
-            align-items: center;
-            position: relative;
-        }
-
-        .top-btn {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .btn-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: #0080ff;
-            color: white;
-            margin-right: 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .top-scrap-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid #ff6b6b;
-            background-color: white;
-            color: #ff6b6b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        .top-scrap-btn:hover {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
-        .top-scrap-btn.active {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
         /* 개발자 카드 스타일 */
         .developer-container {
             display: grid;
@@ -164,6 +103,20 @@
             border-radius: 4px;
             text-decoration: none;
             color: #333;
+            font-size: 14px;
+        }
+
+        .btn-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #0080ff;
+            color: white;
+            margin-right: 8px;
+            font-weight: bold;
             font-size: 14px;
         }
 
@@ -289,25 +242,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- 상단 버튼 섹션 -->
-    <div class="top-buttons">
-        <a href="video-intro.html" class="top-btn">
-            <span class="btn-number">1</span>
-            <span>60초 자기소개 영상</span>
-        </a>
-        <a href="resume-portfolio.html" class="top-btn">
-            <span class="btn-number">2</span>
-            <span>이력서·자소서·포트폴리오</span>
-        </a>
-        <a href="matching.html" class="top-btn">
-            <span class="btn-number">3</span>
-            <span>매칭하기</span>
-        </a>
-        <button class="top-scrap-btn" id="topScrapBtn">
-            <i class="scrap-icon">♡</i>
-        </button>
     </div>
 
     <!-- 개발자 카드 섹션 -->
@@ -449,23 +383,9 @@
                            .map(checkbox => checkbox.value);
             }
             
-            // 스크랩 버튼 기능
-            const topScrapBtn = document.getElementById('topScrapBtn');
+            // 카드 스크랩 버튼
             const cardScrapBtns = document.querySelectorAll('.card-scrap-btn');
             
-            // 상단 스크랩 버튼
-            topScrapBtn.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const scrapIcon = this.querySelector('.scrap-icon');
-                
-                if (this.classList.contains('active')) {
-                    scrapIcon.textContent = '♥'; // 채워진 하트
-                } else {
-                    scrapIcon.textContent = '♡'; // 빈 하트
-                }
-            });
-            
-            // 카드 스크랩 버튼
             cardScrapBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     this.classList.toggle('active');
