@@ -57,41 +57,40 @@
             font-size: 14px;
         }
 
-        .candidate-section {
-            margin-bottom: 30px;
-        }
-
-        /* 버튼 스타일 */
         .button-container {
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .main-buttons {
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            gap: 15px; /* 버튼 간격 */
+            margin-bottom: 30px; /* 버튼 그룹 아래 여백 */
         }
 
         .btn-main {
             display: flex;
             align-items: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            transition: all 0.3s ease-in-out;
+            justify-content: center; /* 텍스트 가운데 정렬 */
+            width: 150px; /* 버튼 크기 */
+            height: 50px; /* 버튼 크기 */
+            background-color: white; /* 기본 배경색 */
+            border: 1px solid #ddd; /* 테두리 색상 */
+            border-radius: 4px; /* 둥근 모서리 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+            color: #333; /* 텍스트 색상 */
+            font-size: 16px; /* 텍스트 크기 */
+            font-weight: bold; /* 텍스트 두께 */
+            transition: all 0.3s ease-in-out; /* 호버 효과 부드럽게 */
         }
 
         .btn-main:hover {
-            background-color: #f0f0f0;
-            border-color: #ccc;
+            background-color: #f0f0f0; /* 호버 시 배경색 변경 */
         }
 
-        .btn-number {
-            display: inline-block;
-            width: 30px; /* 숫자 크기 조정 */
-            height: 30px; /* 숫자 크기 조정 */
-            background-color:#
+        .btn-scrap {
+            width: 50px; /* 동그라미 버튼 크기 */
+            height: 50px; /* 동그라미 버튼 크기 */
+            border-radius: 50%; /* 완전한 원형으로 만들기 */
+            background-color: white; /* 기본 배경색 */
+            border: 2px solid #ff6b6b; /* 테두리 색상 */
+            color: #ff6b6b; /* 아이콘 색상 */
+            font-size: 24px; /* 아이콘 크기 */
+            display:flex ;
+justify-content:center
