@@ -57,40 +57,238 @@
             font-size: 14px;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px; /* 버튼 간격 */
-            margin-bottom: 30px; /* 버튼 그룹 아래 여백 */
+        .candidate-section {
+            margin-bottom: 30px;
         }
 
+        /* 버튼 컨테이너 스타일 */
+        .button-section {
+            margin-top: 20px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        /* 버튼 컨테이너 */
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* 메인 버튼 스타일 */
         .btn-main {
             display: flex;
             align-items: center;
-            justify-content: center; /* 텍스트 가운데 정렬 */
-            width: 150px; /* 버튼 크기 */
-            height: 50px; /* 버튼 크기 */
-            background-color: white; /* 기본 배경색 */
-            border: 1px solid #ddd; /* 테두리 색상 */
-            border-radius: 4px; /* 둥근 모서리 */
-            text-decoration: none; /* 링크 밑줄 제거 */
-            color: #333; /* 텍스트 색상 */
-            font-size: 16px; /* 텍스트 크기 */
-            font-weight: bold; /* 텍스트 두께 */
-            transition: all 0.3s ease-in-out; /* 호버 효과 부드럽게 */
+            padding: 10px 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-
+        
         .btn-main:hover {
-            background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+            background-color: #f0f0f0;
+            border-color: #ccc;
         }
-
+        
+        /* 버튼 번호 스타일 */
+        .btn-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* 버튼 텍스트 스타일 */
+        .btn-text {
+            flex: 1;
+        }
+        
+        /* 스크랩 버튼 스타일 */
         .btn-scrap {
-            width: 50px; /* 동그라미 버튼 크기 */
-            height: 50px; /* 동그라미 버튼 크기 */
-            border-radius: 50%; /* 완전한 원형으로 만들기 */
-            background-color: white; /* 기본 배경색 */
-            border: 2px solid #ff6b6b; /* 테두리 색상 */
-            color: #ff6b6b; /* 아이콘 색상 */
-            font-size: 24px; /* 아이콘 크기 */
-            display:flex ;
-justify-content:center
+            position: absolute;
+            right: 10px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-scrap:hover {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        
+        .btn-scrap.active {
+            background-color: #ff6b6b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>개발자 매칭데이</h1>
+
+    <!-- 필터 섹션 -->
+    <div class="filter-section">
+        <!-- 주요기술 필터 -->
+        <div class="filter-box">
+            <h3>주요기술</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="javascript" name="tech" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="java" name="tech" value="Java">
+                    <label for="java">Java</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="python" name="tech" value="Python">
+                    <label for="python">Python</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="jsp" name="tech" value="JSP">
+                    <label for="jsp">JSP</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="html" name="tech" value="HTML/CSS">
+                    <label for="html">HTML/CSS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="database" name="tech" value="Database">
+                    <label for="database">Database</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="react" name="tech" value="React">
+                    <label for="react">React</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="frontend" name="tech" value="Front-end">
+                    <label for="frontend">Front-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="backend" name="tech" value="Back-end">
+                    <label for="backend">Back-end</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spring" name="tech" value="Spring">
+                    <label for="spring">Spring</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="django" name="tech" value="Django">
+                    <label for="django">Django</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 학위 필터 (자격증에서 변경) -->
+        <div class="filter-box">
+            <h3>학위</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="highschool" name="education" value="고등학교 졸업">
+                    <label for="highschool">고등학교 졸업</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="associate" name="education" value="전문학사">
+                    <label for="associate">전문학사</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bachelor" name="education" value="학사">
+                    <label for="bachelor">학사</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 연령 필터 (변경 없음) -->
+        <div class="filter-box">
+            <h3>연령</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under25" name="age" value="25세 이하">
+                    <label for="under25">25세 이하</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under30" name="age" value="30세 이하">
+                    <label for="under30">30세 이하</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="under35" name="age" value="35세 이하">
+                    <label for="under35">35세 이하</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 후보자 섹션 (예시) -->
+    <div class="candidate-section">
+        <!-- 여기에 후보자 카드들이 표시될 것입니다 -->
+    </div>
+
+    <!-- 버튼 섹션 -->
+    <div class="button-section">
+        <div class="button-container">
+            <!-- 메인 버튼 그룹 -->
+            <a href="video-intro.html" class="btn-main">
+                <span class="btn-number">1</span>
+                <span class="btn-text">60초 자기소개 영상</span>
+            </a>
+            
+            <a href="resume-portfolio.html" class="btn-main">
+                <span class="btn-number">2</span>
+                <span class="btn-text">이력서·자소서·포트폴리오</span>
+            </a>
+            
+            <a href="matching.html" class="btn-main">
+                <span class="btn-number">3</span>
+                <span class="btn-text">매칭하기</span>
+            </a>
+        </div>
+        
+        <!-- 스크랩 버튼 -->
+        <button class="btn-scrap" id="scrapButton">
+            <i class="scrap-icon">♡</i>
+        </button>
+    </div>
+
+    <script>
+        // 스크랩 버튼 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrapButton = document.getElementById('scrapButton');
+            const scrapIcon = scrapButton.querySelector('.scrap-icon');
+            
+            scrapButton.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                if (this.classList.contains('active')) {
+                    scrapIcon.textContent = '♥'; // 채워진 하트
+                    alert('스크랩 되었습니다.');
+                } else {
+                    scrapIcon.textContent = '♡'; // 빈 하트
+                    alert('스크랩이 취소되었습니다.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
