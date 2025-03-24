@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개발자 매칭데이</title>
     <style>
-        /* 기본 스타일 */
         * {
             box-sizing: border-box;
             font-family: 'Noto Sans KR', sans-serif;
@@ -24,6 +23,7 @@
             text-align: center;
             margin-bottom: 30px;
             font-size: 28px;
+            padding: 20px 0;
         }
 
         /* 필터 섹션 스타일 */
@@ -59,31 +59,26 @@
             font-size: 14px;
         }
 
-        /* 버튼 스타일 */
-        .action-buttons {
+        /* 상단 버튼 스타일 */
+        .top-buttons {
             display: flex;
-            gap: 15px;
             margin-bottom: 30px;
             align-items: center;
             position: relative;
         }
 
-        .btn {
+        .top-btn {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 8px 15px;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 4px;
             text-decoration: none;
             color: #333;
             font-size: 14px;
+            margin-right: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #f0f0f0;
         }
 
         .btn-number {
@@ -100,7 +95,7 @@
             font-size: 14px;
         }
 
-        .scrap-btn {
+        .top-scrap-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -113,28 +108,24 @@
             font-size: 20px;
             cursor: pointer;
             margin-left: auto;
-            transition: all 0.3s;
         }
 
-        .scrap-btn:hover {
+        .top-scrap-btn:hover {
             background-color: #ff6b6b;
             color: white;
         }
 
-        .scrap-btn.active {
+        .top-scrap-btn.active {
             background-color: #ff6b6b;
             color: white;
         }
 
-        /* 개발자 카드 섹션 스타일 */
-        .developer-section {
-            margin-top: 40px;
-        }
-
+        /* 개발자 카드 스타일 */
         .developer-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+            margin-top: 20px;
         }
 
         .developer-card {
@@ -145,42 +136,41 @@
             position: relative;
         }
 
-        .developer-info {
-            margin-bottom: 15px;
-        }
-
         .developer-name {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 8px;
         }
 
-        .developer-detail {
+        .developer-details {
+            margin-bottom: 15px;
             font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
+            color: #333;
         }
 
-        .card-actions {
+        /* 카드 내 버튼 스타일 */
+        .card-buttons {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .card-btn {
             display: flex;
             align-items: center;
-            padding: 8px 12px;
+            padding: 10px;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 4px;
             text-decoration: none;
             color: #333;
-            font-size: 13px;
+            font-size: 14px;
         }
 
-        .card-btn:hover {
-            background-color: #f0f0f0;
+        .card-btn .btn-number {
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
         }
 
         .card-scrap-btn {
@@ -301,142 +291,186 @@
         </div>
     </div>
 
-    <!-- 메인 액션 버튼 영역 -->
-    <div class="action-buttons">
-        <a href="video-intro.html" class="btn">
+    <!-- 상단 버튼 섹션 -->
+    <div class="top-buttons">
+        <a href="video-intro.html" class="top-btn">
             <span class="btn-number">1</span>
             <span>60초 자기소개 영상</span>
         </a>
-        <a href="resume-portfolio.html" class="btn">
+        <a href="resume-portfolio.html" class="top-btn">
             <span class="btn-number">2</span>
             <span>이력서·자소서·포트폴리오</span>
         </a>
-        <a href="matching.html" class="btn">
+        <a href="matching.html" class="top-btn">
             <span class="btn-number">3</span>
             <span>매칭하기</span>
         </a>
-        <button class="scrap-btn" id="mainScrapBtn">
+        <button class="top-scrap-btn" id="topScrapBtn">
             <i class="scrap-icon">♡</i>
         </button>
     </div>
 
-    <!-- 개발자 카드 섹션 (예시) -->
-    <div class="developer-section">
-        <div class="developer-container">
-            <!-- 개발자 카드 예시 1 -->
-            <div class="developer-card">
-                <div class="developer-info">
-                    <h3 class="developer-name">홍길동</h3>
-                    <p class="developer-detail">주요기술: JavaScript, React, Node.js</p>
-                    <p class="developer-detail">학력: 학사</p>
-                    <p class="developer-detail">연령: 28세</p>
-                </div>
-                
-                <div class="card-actions">
-                    <a href="video-intro.html?id=1" class="card-btn">
-                        <span class="btn-number">1</span>
-                        <span>60초 자기소개 영상</span>
-                    </a>
-                    <a href="resume-portfolio.html?id=1" class="card-btn">
-                        <span class="btn-number">2</span>
-                        <span>이력서·자소서·포트폴리오</span>
-                    </a>
-                    <a href="matching.html?id=1" class="card-btn">
-                        <span class="btn-number">3</span>
-                        <span>매칭하기</span>
-                    </a>
-                </div>
-                
-                <button class="card-scrap-btn" data-id="1">
-                    <i class="scrap-icon">♡</i>
-                </button>
+    <!-- 개발자 카드 섹션 -->
+    <div class="developer-container">
+        <!-- 개발자 카드 1 -->
+        <div class="developer-card" data-tech="JavaScript,React,Node.js" data-education="학사" data-age="28">
+            <h3 class="developer-name">홍길동</h3>
+            <div class="developer-details">
+                <p>주요기술: JavaScript, React, Node.js</p>
+                <p>학력: 학사</p>
+                <p>연령: 28세</p>
             </div>
-            
-            <!-- 개발자 카드 예시 2 -->
-            <div class="developer-card">
-                <div class="developer-info">
-                    <h3 class="developer-name">김철수</h3>
-                    <p class="developer-detail">주요기술: Java, Spring, Oracle</p>
-                    <p class="developer-detail">학력: 전문학사</p>
-                    <p class="developer-detail">연령: 32세</p>
-                </div>
-                
-                <div class="card-actions">
-                    <a href="video-intro.html?id=2" class="card-btn">
-                        <span class="btn-number">1</span>
-                        <span>60초 자기소개 영상</span>
-                    </a>
-                    <a href="resume-portfolio.html?id=2" class="card-btn">
-                        <span class="btn-number">2</span>
-                        <span>이력서·자소서·포트폴리오</span>
-                    </a>
-                    <a href="matching.html?id=2" class="card-btn">
-                        <span class="btn-number">3</span>
-                        <span>매칭하기</span>
-                    </a>
-                </div>
-                
-                <button class="card-scrap-btn" data-id="2">
-                    <i class="scrap-icon">♡</i>
-                </button>
+            <div class="card-buttons">
+                <a href="video-intro.html?id=1" class="card-btn">
+                    <span class="btn-number">1</span>
+                    <span>60초 자기소개 영상</span>
+                </a>
+                <a href="resume-portfolio.html?id=1" class="card-btn">
+                    <span class="btn-number">2</span>
+                    <span>이력서·자소서·포트폴리오</span>
+                </a>
+                <a href="matching.html?id=1" class="card-btn">
+                    <span class="btn-number">3</span>
+                    <span>매칭하기</span>
+                </a>
             </div>
-            
-            <!-- 개발자 카드 예시 3 -->
-            <div class="developer-card">
-                <div class="developer-info">
-                    <h3 class="developer-name">이영희</h3>
-                    <p class="developer-detail">주요기술: Python, Django, MySQL</p>
-                    <p class="developer-detail">학력: 학사</p>
-                    <p class="developer-detail">연령: 24세</p>
-                </div>
-                
-                <div class="card-actions">
-                    <a href="video-intro.html?id=3" class="card-btn">
-                        <span class="btn-number">1</span>
-                        <span>60초 자기소개 영상</span>
-                    </a>
-                    <a href="resume-portfolio.html?id=3" class="card-btn">
-                        <span class="btn-number">2</span>
-                        <span>이력서·자소서·포트폴리오</span>
-                    </a>
-                    <a href="matching.html?id=3" class="card-btn">
-                        <span class="btn-number">3</span>
-                        <span>매칭하기</span>
-                    </a>
-                </div>
-                
-                <button class="card-scrap-btn" data-id="3">
-                    <i class="scrap-icon">♡</i>
-                </button>
+            <button class="card-scrap-btn" data-id="1">
+                <i class="scrap-icon">♡</i>
+            </button>
+        </div>
+
+        <!-- 개발자 카드 2 -->
+        <div class="developer-card" data-tech="Java,Spring,Oracle" data-education="전문학사" data-age="32">
+            <h3 class="developer-name">김철수</h3>
+            <div class="developer-details">
+                <p>주요기술: Java, Spring, Oracle</p>
+                <p>학력: 전문학사</p>
+                <p>연령: 32세</p>
             </div>
+            <div class="card-buttons">
+                <a href="video-intro.html?id=2" class="card-btn">
+                    <span class="btn-number">1</span>
+                    <span>60초 자기소개 영상</span>
+                </a>
+                <a href="resume-portfolio.html?id=2" class="card-btn">
+                    <span class="btn-number">2</span>
+                    <span>이력서·자소서·포트폴리오</span>
+                </a>
+                <a href="matching.html?id=2" class="card-btn">
+                    <span class="btn-number">3</span>
+                    <span>매칭하기</span>
+                </a>
+            </div>
+            <button class="card-scrap-btn" data-id="2">
+                <i class="scrap-icon">♡</i>
+            </button>
+        </div>
+
+        <!-- 개발자 카드 3 -->
+        <div class="developer-card" data-tech="Python,Django,MySQL" data-education="학사" data-age="24">
+            <h3 class="developer-name">이영희</h3>
+            <div class="developer-details">
+                <p>주요기술: Python, Django, MySQL</p>
+                <p>학력: 학사</p>
+                <p>연령: 24세</p>
+            </div>
+            <div class="card-buttons">
+                <a href="video-intro.html?id=3" class="card-btn">
+                    <span class="btn-number">1</span>
+                    <span>60초 자기소개 영상</span>
+                </a>
+                <a href="resume-portfolio.html?id=3" class="card-btn">
+                    <span class="btn-number">2</span>
+                    <span>이력서·자소서·포트폴리오</span>
+                </a>
+                <a href="matching.html?id=3" class="card-btn">
+                    <span class="btn-number">3</span>
+                    <span>매칭하기</span>
+                </a>
+            </div>
+            <button class="card-scrap-btn" data-id="3">
+                <i class="scrap-icon">♡</i>
+            </button>
         </div>
     </div>
 
     <script>
-        // 스크랩 버튼 기능
         document.addEventListener('DOMContentLoaded', function() {
-            // 메인 스크랩 버튼
-            const mainScrapBtn = document.getElementById('mainScrapBtn');
-            if (mainScrapBtn) {
-                mainScrapBtn.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const scrapIcon = this.querySelector('.scrap-icon');
+            // 필터링 기능 구현
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const developerCards = document.querySelectorAll('.developer-card');
+            
+            // 각 체크박스에 이벤트 리스너 추가
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', filterDevelopers);
+            });
+            
+            // 필터링 함수
+            function filterDevelopers() {
+                // 선택된 필터 값들 수집
+                const selectedTechs = getSelectedValues('tech');
+                const selectedEducation = getSelectedValues('education');
+                const selectedAges = getSelectedValues('age');
+                
+                // 모든 개발자 카드 순회
+                developerCards.forEach(card => {
+                    // 카드에서 데이터 속성 가져오기
+                    const cardTech = card.getAttribute('data-tech');
+                    const cardEducation = card.getAttribute('data-education');
+                    const cardAge = parseInt(card.getAttribute('data-age'));
                     
-                    if (this.classList.contains('active')) {
-                        scrapIcon.textContent = '♥'; // 채워진 하트
+                    // 필터 조건 확인
+                    const techMatch = selectedTechs.length === 0 || 
+                                     selectedTechs.some(tech => cardTech.includes(tech));
+                                     
+                    const educationMatch = selectedEducation.length === 0 || 
+                                          selectedEducation.includes(cardEducation);
+                                          
+                    const ageMatch = selectedAges.length === 0 || 
+                                    selectedAges.some(age => {
+                                        if (age === '25세 이하') return cardAge <= 25;
+                                        if (age === '30세 이하') return cardAge <= 30;
+                                        if (age === '35세 이하') return cardAge <= 35;
+                                        return false;
+                                    });
+                    
+                    // 모든 조건을 만족하면 카드 표시, 아니면 숨김
+                    if (techMatch && educationMatch && ageMatch) {
+                        card.style.display = 'block';
                     } else {
-                        scrapIcon.textContent = '♡'; // 빈 하트
+                        card.style.display = 'none';
                     }
                 });
             }
             
-            // 카드 스크랩 버튼들
+            // 선택된 체크박스 값 가져오기
+            function getSelectedValues(name) {
+                return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+                           .map(checkbox => checkbox.value);
+            }
+            
+            // 스크랩 버튼 기능
+            const topScrapBtn = document.getElementById('topScrapBtn');
             const cardScrapBtns = document.querySelectorAll('.card-scrap-btn');
+            
+            // 상단 스크랩 버튼
+            topScrapBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const scrapIcon = this.querySelector('.scrap-icon');
+                
+                if (this.classList.contains('active')) {
+                    scrapIcon.textContent = '♥'; // 채워진 하트
+                } else {
+                    scrapIcon.textContent = '♡'; // 빈 하트
+                }
+            });
+            
+            // 카드 스크랩 버튼
             cardScrapBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const developerId = this.getAttribute('data-id');
                     this.classList.toggle('active');
                     const scrapIcon = this.querySelector('.scrap-icon');
+                    const developerId = this.getAttribute('data-id');
                     
                     if (this.classList.contains('active')) {
                         scrapIcon.textContent = '♥'; // 채워진 하트
