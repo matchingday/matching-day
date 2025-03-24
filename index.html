@@ -126,70 +126,49 @@
             border-radius: 10px;
         }
 
-        /* 카드 내부 레이아웃 */
-        .card-top {
+        /* 카드 내부 레이아웃 - 수정됨 */
+        .card-content {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 12px;
         }
 
-        /* 프로필 사진 (컨테이너 1) */
+        /* 프로필 사진 */
         .profile-photo {
-            width: 100px;
+            width: 90px;
             height: 120px;
             background-color: #e0e0e0;
             border: 1px solid #ccc;
             flex-shrink: 0;
-            border-radius: 3px;
-            overflow: hidden;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
             color: #666;
+            font-size: 14px;
         }
 
-        /* 이름 및 나이 영역 (컨테이너 2) */
-        .name-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .developer-name {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        /* 정보 영역 */
+        /* 텍스트 정보 컨테이너 */
         .info-container {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            justify-content: space-between;
+            height: 120px; /* 사진 높이와 동일하게 설정 */
+            flex-grow: 1;
         }
 
-        /* 학력 (컨테이너 3) */
-        .developer-edu {
-            font-size: 14px;
-            color: #555;
-            padding: 5px 0;
-            border-top: 1px solid #eee;
+        /* 이름 및 정보 스타일 */
+        .developer-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 4px;
         }
 
-        /* 프로젝트 개발명 (컨테이너 4) */
-        .developer-project {
-            font-size: 14px;
-            color: #555;
-            padding: 5px 0;
-            border-top: 1px solid #eee;
-        }
-
-        /* MBTI (컨테이너 5) */
+        .developer-edu, 
+        .developer-project, 
         .developer-mbti {
             font-size: 14px;
             color: #555;
-            padding: 5px 0;
-            border-top: 1px solid #eee;
+            line-height: 1.3;
         }
 
         /* 스크랩 버튼 */
@@ -208,6 +187,7 @@
             justify-content: center;
             font-size: 14px;
             cursor: pointer;
+            z-index: 2;
         }
 
         .card-scrap-btn.active {
@@ -279,7 +259,7 @@
         <p>2025년 봄, 프론트엔드 개발에 특화된 인재를 소개합니다!</p>
     </div>
 
-    <!-- 개발자 카드 섹션 -->
+    <!-- 개발자 카드 섹션 - 수정된 레이아웃 -->
     <div class="developer-container">
         <!-- 개발자 카드 1 -->
         <div class="developer-card" data-education="학사 졸업" data-age="28">
@@ -288,21 +268,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <!-- 상단 영역: 사진(1)과 이름/나이(2) -->
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">홍길동 (28)</div>
+                    <div class="developer-edu">학사 졸업</div>
+                    <div class="developer-project">쇼핑몰 웹사이트 개발</div>
+                    <div class="developer-mbti">ENFJ</div>
                 </div>
-            </div>
-            
-            <!-- 정보 영역: 학력(3), 프로젝트(4), MBTI(5) -->
-            <div class="info-container">
-                <div class="developer-edu">학사 졸업</div>
-                <div class="developer-project">쇼핑몰 웹사이트 개발</div>
-                <div class="developer-mbti">ENFJ</div>
             </div>
         </div>
 
@@ -313,19 +286,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">김철수 (32)</div>
+                    <div class="developer-edu">전문학사 졸업</div>
+                    <div class="developer-project">기업 회계 시스템</div>
+                    <div class="developer-mbti">ISTJ</div>
                 </div>
-            </div>
-            
-            <div class="info-container">
-                <div class="developer-edu">전문학사 졸업</div>
-                <div class="developer-project">기업 회계 시스템</div>
-                <div class="developer-mbti">ISTJ</div>
             </div>
         </div>
 
@@ -336,19 +304,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">이영희 (24)</div>
+                    <div class="developer-edu">학사 졸업</div>
+                    <div class="developer-project">SNS 플랫폼 개발</div>
+                    <div class="developer-mbti">ENTP</div>
                 </div>
-            </div>
-            
-            <div class="info-container">
-                <div class="developer-edu">학사 졸업</div>
-                <div class="developer-project">SNS 플랫폼 개발</div>
-                <div class="developer-mbti">ENTP</div>
             </div>
         </div>
 
@@ -359,19 +322,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">박민수 (26)</div>
+                    <div class="developer-edu">고등학교 졸업</div>
+                    <div class="developer-project">모바일 게임 앱</div>
+                    <div class="developer-mbti">INTP</div>
                 </div>
-            </div>
-            
-            <div class="info-container">
-                <div class="developer-edu">고등학교 졸업</div>
-                <div class="developer-project">모바일 게임 앱</div>
-                <div class="developer-mbti">INTP</div>
             </div>
         </div>
 
@@ -382,19 +340,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">정지원 (29)</div>
+                    <div class="developer-edu">학사 졸업</div>
+                    <div class="developer-project">AI 기반 추천 시스템</div>
+                    <div class="developer-mbti">INTJ</div>
                 </div>
-            </div>
-            
-            <div class="info-container">
-                <div class="developer-edu">학사 졸업</div>
-                <div class="developer-project">AI 기반 추천 시스템</div>
-                <div class="developer-mbti">INTJ</div>
             </div>
         </div>
 
@@ -405,19 +358,14 @@
                 <i class="scrap-icon">♡</i>
             </button>
             
-            <div class="card-top">
-                <div class="profile-photo">
-                    사진
-                </div>
-                <div class="name-container">
+            <div class="card-content">
+                <div class="profile-photo">사진</div>
+                <div class="info-container">
                     <div class="developer-name">송미래 (27)</div>
+                    <div class="developer-edu">전문학사 졸업</div>
+                    <div class="developer-project">여행 예약 플랫폼</div>
+                    <div class="developer-mbti">ESFJ</div>
                 </div>
-            </div>
-            
-            <div class="info-container">
-                <div class="developer-edu">전문학사 졸업</div>
-                <div class="developer-project">여행 예약 플랫폼</div>
-                <div class="developer-mbti">ESFJ</div>
             </div>
         </div>
     </div>
