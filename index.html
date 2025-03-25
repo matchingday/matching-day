@@ -98,18 +98,27 @@
 
         /* 카드 내 사진 영역 */
         .photo-container {
-            position: relative; /* 하트 버튼의 기준점 */
+            position: relative;
             margin-right: 15px;
         }
 
         .photo {
             width: 100px;
             height: 130px;
-            background-color: #ddd;
+            background-color: #f8f8f8;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #666;
+            overflow: hidden;
+        }
+
+        /* 프로필 이미지 스타일 */
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .info {
@@ -237,7 +246,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/홍길동.jpg" alt="홍길동 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>홍길동 (28)</h3>
@@ -253,7 +264,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/김철수.jpg" alt="김철수 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>김철수 (32)</h3>
@@ -269,7 +282,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/이영희.jpg" alt="이영희 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>이영희 (24)</h3>
@@ -285,7 +300,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/박민수.jpg" alt="박민수 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>박민수 (26)</h3>
@@ -301,7 +318,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/정지원.jpg" alt="정지원 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>정지원 (29)</h3>
@@ -317,7 +336,9 @@
         <div class="student-card">
             <div class="photo-container">
                 <button class="favorite-btn">❤</button>
-                <div class="photo">사진</div>
+                <div class="photo">
+                    <img src="images/송미래.jpg" alt="송미래 프로필 사진">
+                </div>
             </div>
             <div class="info">
                 <h3>송미래 (27)</h3>
