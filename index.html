@@ -167,16 +167,6 @@
         .resume-btn:hover {
             background-color: #45a049;
         }
-        
-        /* 비활성화된 이력서 버튼 */
-        .resume-btn.disabled {
-            background-color: #cccccc;
-            cursor: default;
-        }
-        
-        .resume-btn.disabled:hover {
-            background-color: #cccccc;
-        }
     </style>
 </head>
 <body>
@@ -223,8 +213,8 @@
 
     <!-- 인재 카드 그리드 -->
     <div class="cards-grid">
-        <!-- 홍길동 - 이력서 연결 -->
-        <div class="student-card" id="홍길동">
+        <!-- 홍길동 - 테스트.pdf 연결 -->
+        <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
             <button class="resume-btn" data-resume="resumes/테스트.pdf">이력서 보기</button>
@@ -237,11 +227,11 @@
             </div>
         </div>
 
-        <!-- 김철수 -->
+        <!-- 김철수 - 테스트2.pdf 연결 -->
         <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
-            <button class="resume-btn disabled">이력서 보기</button>
+            <button class="resume-btn" data-resume="resumes/테스트2.pdf">이력서 보기</button>
             <div class="photo">사진</div>
             <div class="info">
                 <h3>김철수 (32)</h3>
@@ -255,7 +245,7 @@
         <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
-            <button class="resume-btn disabled">이력서 보기</button>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
             <div class="photo">사진</div>
             <div class="info">
                 <h3>이영희 (24)</h3>
@@ -269,7 +259,7 @@
         <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
-            <button class="resume-btn disabled">이력서 보기</button>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
             <div class="photo">사진</div>
             <div class="info">
                 <h3>박민수 (26)</h3>
@@ -283,7 +273,7 @@
         <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
-            <button class="resume-btn disabled">이력서 보기</button>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
             <div class="photo">사진</div>
             <div class="info">
                 <h3>정지원 (29)</h3>
@@ -297,7 +287,7 @@
         <div class="student-card">
             <button class="favorite-btn">❤</button>
             <div class="tag">이달의 추천</div>
-            <button class="resume-btn disabled">이력서 보기</button>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
             <div class="photo">사진</div>
             <div class="info">
                 <h3>송미래 (27)</h3>
@@ -326,20 +316,18 @@
                 });
             });
             
-            // 이력서 PDF 열기 기능 - 버튼 클릭 시 (홍길동만 활성화)
+            // 이력서 PDF 열기 기능 - 모든 버튼 활성화
             const resumeButtons = document.querySelectorAll('.resume-btn');
             
             resumeButtons.forEach(button => {
-                if (!button.classList.contains('disabled')) {
-                    button.addEventListener('click', function(e) {
-                        e.stopPropagation(); // 이벤트 전파 방지
-                        const resumePath = this.getAttribute('data-resume');
-                        
-                        if (resumePath) {
-                            window.open(resumePath, '_blank');
-                        }
-                    });
-                }
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 이벤트 전파 방지
+                    const resumePath = this.getAttribute('data-resume');
+                    
+                    if (resumePath) {
+                        window.open(resumePath, '_blank');
+                    }
+                });
             });
             
             // 필터 기능
