@@ -115,49 +115,34 @@
         }
 
         .info h3 {
-            margin-bottom: 12px; /* 이름과 정보 사이 간격 증가 */
+            margin-bottom: 12px;
             font-size: 18px;
             color: #333;
             font-weight: 600;
         }
 
         .info p {
-            margin-bottom: 8px; /* 정보 항목 간 간격 증가 */
-            font-size: 14.5px; /* 글자 크기 약간 증가 */
-            color: #444; /* 텍스트 색상 강화 */
-            padding: 2px 0; /* 위아래 패딩 추가 */
-            font-weight: 500; /* 글자 약간 두껍게 */
+            margin-bottom: 8px;
+            font-size: 14.5px;
+            color: #444;
+            padding: 2px 0;
+            font-weight: 500;
         }
 
-        /* 정보 항목 강조를 위한 스타일 */
-        .info p:nth-child(2) {
-            background-color: #f8f8f8;
-            padding-left: 5px;
-            border-left: 3px solid #4CAF50;
-        }
-
-        .info p:nth-child(3) {
-            background-color: #f0f8ff;
-            padding-left: 5px;
-            border-left: 3px solid #2196F3;
-        }
-
-        .info p:nth-child(4) {
-            background-color: #fff8f0;
-            padding-left: 5px;
-            border-left: 3px solid #FF9800;
-        }
+        /* 색상 컨테이너 스타일 제거됨 */
 
         .favorite-btn {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background: none;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.8);
             border: none;
             cursor: pointer;
             font-size: 20px;
             color: #ccc;
             z-index: 10;
+            padding: 5px 10px;
+            border-radius: 0 0 8px 0;
         }
 
         .favorite-btn.active {
@@ -178,7 +163,7 @@
         /* 이력서 버튼 */
         .resume-btn {
             position: absolute;
-            top: 40px; /* 이달의 추천 태그 아래로 위치 조정 */
+            top: 40px;
             right: 10px;
             background-color: #4CAF50;
             color: white;
