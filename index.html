@@ -67,15 +67,8 @@
             padding: 20px;
             margin-bottom: 30px;
             text-align: center;
-        }
-
-        /* 일반 인재 섹션 - 파란색 테마 */
-        .regular-section {
-            background-color: #e6f2ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: center;
+            position: relative;
+            overflow: hidden; /* 벚꽃이 넘치지 않도록 */
         }
 
         .cherry-blossom {
@@ -83,9 +76,27 @@
             margin: 0 5px;
         }
 
-        .blue-star {
-            color: #4285F4;
-            margin: 0 5px;
+        /* 벚꽃 애니메이션 효과 */
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ffc0cb;
+            border-radius: 150% 0 150% 0;
+            animation: falling linear forwards;
+        }
+
+        @keyframes falling {
+            0% {
+                top: -10%;
+                transform: rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                transform: rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
         }
 
         /* 인재 카드 그리드 */
@@ -253,149 +264,15 @@
     </div>
 
     <!-- 인재 테마 섹션 -->
-    <div class="theme-section">
+    <div class="theme-section" id="cherryBlossomSection">
         <h2><span class="cherry-blossom">🌸</span> 이달의 추천 인재 테마 <span class="cherry-blossom">🌸</span></h2>
         <p>2025년 봄, 프론트엔드 개발에 특화된 인재를 소개합니다!</p>
     </div>
 
-    <!-- 인재 카드 그리드 - 이달의 추천 -->
+    <!-- 인재 카드 그리드 -->
     <div class="cards-grid">
-        <!-- 홍길동 - 테스트.pdf 연결 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/홍길동.jpg" alt="홍길동 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>홍길동 (28)</h3>
-                <p>학사 졸업</p>
-                <p>헬스 PT 시스템</p>
-                <p>ISTJ</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/테스트.pdf">이력서 보기</button>
-        </div>
-
-        <!-- 김철수 - 테스트2.pdf 연결 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/김철수.jpg" alt="김철수 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>김철수 (32)</h3>
-                <p>전문학사 졸업</p>
-                <p>기업 회계 시스템</p>
-                <p>ISTJ</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/테스트2.pdf">이력서 보기</button>
-        </div>
-
-        <!-- 이영희 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/이영희.jpg" alt="이영희 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>이영희 (24)</h3>
-                <p>학사 졸업</p>
-                <p>SNS 플랫폼 개발</p>
-                <p>ENTP</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
-        </div>
-
-        <!-- 박민수 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/박민수.jpg" alt="박민수 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>박민수 (26)</h3>
-                <p>고등학교 졸업</p>
-                <p>모바일 게임 앱</p>
-                <p>INTP</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
-        </div>
-
-        <!-- 정지원 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/정지원.jpg" alt="정지원 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>정지원 (29)</h3>
-                <p>학사 졸업</p>
-                <p>AI 기반 추천 시스템</p>
-                <p>INTJ</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
-        </div>
-
-        <!-- 송미래 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <img src="images/송미래.jpg" alt="송미래 프로필 사진">
-                </div>
-            </div>
-            <div class="info">
-                <h3>송미래 (27)</h3>
-                <p>전문학사 졸업</p>
-                <p>여행 예약 플랫폼</p>
-                <p>ESFJ</p>
-            </div>
-            <div class="tag">이달의 추천</div>
-            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
-        </div>
-    </div>
-
-    <!-- 일반 인재 섹션 - 파란색 테마 -->
-    <div class="regular-section">
-        <h2><span class="blue-star">✦</span> 더 많은 개발 인재 만나보기 <span class="blue-star">✦</span></h2>
-        <p>6개월간 집중 훈련으로 성장한 준비된 개발자를 소개합니다!</p>
-    </div>
-
-    <!-- 인재 카드 그리드 - 일반 인재 -->
-    <div class="cards-grid">
-        <!-- 추가 학생 1 -->
-        <div class="student-card">
-            <div class="photo-container">
-                <button class="favorite-btn">❤</button>
-                <div class="photo">
-                    <!-- 이미지가 없는 경우 기본 텍스트 -->
-                    <span>사진</span>
-                </div>
-            </div>
-            <div class="info">
-                <h3>강현우 (25)</h3>
-                <p>학사 졸업</p>
-                <p>블록체인 솔루션</p>
-                <p>ENFP</p>
-            </div>
-            <div class="tag blue">솔데스크</div>
-            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
-        </div>
-
+        <!-- 학생 카드들... -->
+        
         <!-- 추가 학생 2 -->
         <div class="student-card">
             <div class="photo-container">
@@ -483,37 +360,51 @@
                 });
             });
             
-            // 필터 기능 - 학사와 전문학사 구분하도록 수정
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            const studentCards = document.querySelectorAll('.student-card');
+            // 벚꽃 애니메이션 효과 추가
+            const cherrySection = document.getElementById('cherryBlossomSection');
+            const sectionWidth = cherrySection.offsetWidth;
             
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', filterStudents);
-            });
-            
-            function filterStudents() {
-                const selectedEducation = Array.from(document.querySelectorAll('input[name="education"]:checked')).map(cb => cb.value);
-                const selectedAges = Array.from(document.querySelectorAll('input[name="age"]:checked')).map(cb => cb.value);
+            // 벚꽃 잎 생성 함수
+            function createPetal() {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
                 
-                studentCards.forEach(card => {
-                    const info = card.querySelector('.info');
-                    const educationText = info.querySelectorAll('p')[0].textContent.trim();
-                    const ageText = info.querySelector('h3').textContent.match(/\((\d+)\)/)[1];
-                    const age = parseInt(ageText);
-                    
-                    // 정확히 일치하는지 확인하도록 수정
-                    let showByEducation = selectedEducation.length === 0 || selectedEducation.includes(educationText);
-                    let showByAge = selectedAges.length === 0;
-                    
-                    if (!showByAge) {
-                        if (selectedAges.includes('25') && age <= 25) showByAge = true;
-                        else if (selectedAges.includes('30') && age <= 30 && age > 25) showByAge = true;
-                        else if (selectedAges.includes('31') && age >= 31) showByAge = true;
-                    }
-                    
-                    card.style.display = (showByEducation && showByAge) ? 'flex' : 'none';
-                });
+                // 랜덤 속성 설정
+                const size = Math.random() * 10 + 10; // 10px ~ 20px
+                const left = Math.random() * sectionWidth;
+                const opacity = Math.random() * 0.5 + 0.5; // 0.5 ~ 1
+                const duration = Math.random() * 6 + 4; // 4초 ~ 10초
+                const delay = Math.random() * 5; // 0초 ~ 5초
+                
+                // 벚꽃 잎 스타일 설정
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${left}px`;
+                petal.style.opacity = opacity;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                
+                // 벚꽃 잎 색상 랜덤 설정 (연한 분홍색 계열)
+                const hue = Math.random() * 20 + 345; // 345 ~ 365 (빨간색~분홍색)
+                const saturation = Math.random() * 20 + 80; // 80% ~ 100%
+                const lightness = Math.random() * 10 + 85; // 85% ~ 95%
+                petal.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                
+                cherrySection.appendChild(petal);
+                
+                // 애니메이션 종료 후 요소 제거
+                setTimeout(() => {
+                    petal.remove();
+                }, (duration + delay) * 1000);
             }
+            
+            // 초기 벚꽃 잎 생성
+            for (let i = 0; i < 20; i++) {
+                createPetal();
+            }
+            
+            // 주기적으로 새 벚꽃 잎 생성
+            setInterval(createPetal, 500);
         });
     </script>
 </body>
