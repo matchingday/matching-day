@@ -69,8 +69,22 @@
             text-align: center;
         }
 
+        /* 일반 인재 섹션 - 파란색 테마 */
+        .regular-section {
+            background-color: #e6f2ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
         .cherry-blossom {
             color: #ff85a2;
+            margin: 0 5px;
+        }
+
+        .blue-star {
+            color: #4285F4;
             margin: 0 5px;
         }
 
@@ -178,6 +192,10 @@
             font-size: 12px;
         }
         
+        .tag.blue {
+            background-color: #4285F4;
+        }
+        
         /* 이력서 버튼 */
         .resume-btn {
             position: absolute;
@@ -240,7 +258,7 @@
         <p>2025년 봄, 프론트엔드 개발에 특화된 인재를 소개합니다!</p>
     </div>
 
-    <!-- 인재 카드 그리드 -->
+    <!-- 인재 카드 그리드 - 이달의 추천 -->
     <div class="cards-grid">
         <!-- 홍길동 - 테스트.pdf 연결 -->
         <div class="student-card">
@@ -347,6 +365,88 @@
                 <p>ESFJ</p>
             </div>
             <div class="tag">이달의 추천</div>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
+        </div>
+    </div>
+
+    <!-- 일반 인재 섹션 - 파란색 테마 -->
+    <div class="regular-section">
+        <h2><span class="blue-star">✦</span> 더 많은 개발 인재 만나보기 <span class="blue-star">✦</span></h2>
+        <p>다양한 분야의 우수한 개발자들을 지금 바로 확인하세요!</p>
+    </div>
+
+    <!-- 인재 카드 그리드 - 일반 인재 -->
+    <div class="cards-grid">
+        <!-- 추가 학생 1 -->
+        <div class="student-card">
+            <div class="photo-container">
+                <button class="favorite-btn">❤</button>
+                <div class="photo">
+                    <!-- 이미지가 없는 경우 기본 텍스트 -->
+                    <span>사진</span>
+                </div>
+            </div>
+            <div class="info">
+                <h3>강현우 (25)</h3>
+                <p>학사 졸업</p>
+                <p>블록체인 솔루션</p>
+                <p>ENFP</p>
+            </div>
+            <div class="tag blue">개발 인재</div>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
+        </div>
+
+        <!-- 추가 학생 2 -->
+        <div class="student-card">
+            <div class="photo-container">
+                <button class="favorite-btn">❤</button>
+                <div class="photo">
+                    <span>사진</span>
+                </div>
+            </div>
+            <div class="info">
+                <h3>이지민 (33)</h3>
+                <p>전문학사 졸업</p>
+                <p>데이터 분석 도구</p>
+                <p>ISTP</p>
+            </div>
+            <div class="tag blue">개발 인재</div>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
+        </div>
+
+        <!-- 추가 학생 3 -->
+        <div class="student-card">
+            <div class="photo-container">
+                <button class="favorite-btn">❤</button>
+                <div class="photo">
+                    <span>사진</span>
+                </div>
+            </div>
+            <div class="info">
+                <h3>박서연 (27)</h3>
+                <p>학사 졸업</p>
+                <p>클라우드 서비스</p>
+                <p>INFJ</p>
+            </div>
+            <div class="tag blue">개발 인재</div>
+            <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
+        </div>
+
+        <!-- 추가 학생 4 -->
+        <div class="student-card">
+            <div class="photo-container">
+                <button class="favorite-btn">❤</button>
+                <div class="photo">
+                    <span>사진</span>
+                </div>
+            </div>
+            <div class="info">
+                <h3>최준호 (29)</h3>
+                <p>고등학교 졸업</p>
+                <p>모바일 앱 개발</p>
+                <p>ESTP</p>
+            </div>
+            <div class="tag blue">개발 인재</div>
             <button class="resume-btn" data-resume="resumes/이력서_샘플.pdf">이력서 보기</button>
         </div>
     </div>
