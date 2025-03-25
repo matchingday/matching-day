@@ -60,232 +60,115 @@
             white-space: nowrap;
         }
 
-        /* 추천 인재 테마 섹션 */
-        .monthly-theme {
-            position: relative;
-            margin-bottom: 30px;
+        /* 인재 테마 섹션 */
+        .theme-section {
+            background-color: #ffe6e6;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 8px;
-            background-color: #ffdbdb;
+            margin-bottom: 30px;
             text-align: center;
-            overflow: hidden;
         }
 
-        .monthly-theme h2 {
-            color: #d81b60;
-            font-size: 20px;
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .monthly-theme p {
-            color: #333;
-            font-size: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* 벚꽃 아이콘 */
         .cherry-blossom {
-            display: inline-block;
+            color: #ff85a2;
             margin: 0 5px;
-            color: #d81b60;
-        }
-        
-        /* 벚꽃 애니메이션 */
-        .blossom-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .blossom {
-            position: absolute;
-            background-color: #ffcad4;
-            border-radius: 150% 0 150% 0;
-            transform: rotate(45deg);
-            animation: falling linear infinite;
-        }
-        
-        .blossom:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #f8bbd0;
-            border-radius: 150% 0 150% 0;
-            transform: rotate(45deg);
-        }
-        
-        @keyframes falling {
-            0% {
-                opacity: 0;
-                top: -10%;
-                transform: translateX(0) rotate(0deg);
-            }
-            10% {
-                opacity: 1;
-            }
-            20% {
-                transform: translateX(20px) rotate(45deg);
-            }
-            40% {
-                transform: translateX(-20px) rotate(90deg);
-            }
-            60% {
-                transform: translateX(20px) rotate(135deg);
-            }
-            80% {
-                transform: translateX(-20px) rotate(180deg);
-            }
-            100% {
-                top: 110%;
-                opacity: 0;
-                transform: translateX(20px) rotate(225deg);
-            }
         }
 
-        /* 개발자 카드 컨테이너 - 한 줄에 3개로 변경 */
-        .developer-container {
+        /* 인재 카드 그리드 */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: rgba(255, 236, 239, 0.3);
-            border: 1px dashed #ffc0cb;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        /* 개발자 카드 스타일 */
-        .developer-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
+        .student-card {
             background-color: white;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        /* 이달의 추천 배지 */
-        .featured-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff5c8d;
-            color: white;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-
-        /* 카드 내부 레이아웃 - 수정됨 */
-        .card-content {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
-            gap: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
         }
 
-        /* 프로필 사진 - 크기 증가 */
-        .profile-photo {
-            width: 120px; /* 사진 크기 증가 */
-            height: 150px; /* 사진 크기 증가 */
-            background-color: #e0e0e0;
-            border: 1px solid #ccc;
-            flex-shrink: 0;
-            border-radius: 4px;
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo {
+            width: 100px;
+            height: 130px;
+            background-color: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 15px;
             color: #666;
-            font-size: 14px;
-            overflow: hidden;
         }
 
-        /* 텍스트 정보 컨테이너 */
-        .info-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 150px; /* 사진 높이와 일치 */
+        .info {
             flex-grow: 1;
-            padding: 5px 0;
         }
 
-        /* 이름 및 정보 스타일 */
-        .developer-name {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 4px;
+        .info h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
         }
 
-        .developer-edu, 
-        .developer-project, 
-        .developer-mbti {
+        .info p {
+            margin-bottom: 5px;
             font-size: 14px;
             color: #555;
-            line-height: 1.3;
         }
 
-        /* 스크랩 버튼 - 하트 디자인 변경 */
-        .card-scrap-btn {
+        .favorite-btn {
             position: absolute;
             top: 10px;
             left: 10px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 1px solid #ff6b6b;
-            background-color: white;
-            color: #ff6b6b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            background: none;
+            border: none;
             cursor: pointer;
-            z-index: 2;
-            transition: all 0.2s ease;
+            font-size: 20px;
+            color: #ccc;
+            z-index: 10;
         }
 
-        .card-scrap-btn:hover {
-            background-color: #fff0f0;
+        .favorite-btn.active {
+            color: #ff6b81;
         }
 
-        .card-scrap-btn.active {
-            background-color: #ff6b6b;
+        .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff85a2;
             color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
         }
-
-        /* 하트 아이콘 */
-        .heart-icon {
-            font-size: 16px;
-            line-height: 1;
+        
+        /* 이력서 버튼 */
+        .resume-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
         }
-
-        /* 반응형 디자인 */
-        @media (max-width: 900px) {
-            .developer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .developer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-photo {
-                width: 100px;
-                height: 120px;
-            }
-            
-            .info-container {
-                height: 120px;
-            }
+        
+        .resume-btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -294,254 +177,203 @@
 
     <!-- 필터 섹션 -->
     <div class="filter-section">
-        <!-- 학위 필터 -->
         <div class="filter-box">
             <h3>학위</h3>
             <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="highschool" name="education" value="고등학교 졸업">
-                    <label for="highschool">고등학교 졸업</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="associate" name="education" value="전문학사 졸업">
-                    <label for="associate">전문학사 졸업</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="bachelor" name="education" value="학사 졸업">
-                    <label for="bachelor">학사 졸업</label>
-                </div>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="education" value="고등학교"> 고등학교 졸업
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="education" value="전문학사"> 전문학사 졸업
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="education" value="학사"> 학사 졸업
+                </label>
             </div>
         </div>
 
-        <!-- 연령 필터 -->
         <div class="filter-box">
             <h3>연령</h3>
             <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="under25" name="age" value="25세 이하">
-                    <label for="under25">25세 이하</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="under30" name="age" value="30세 이하">
-                    <label for="under30">30세 이하</label>
-                </div>
-                <div class="checkbox-item">
-                    <input type="checkbox" id="over31" name="age" value="31세 이상">
-                    <label for="over31">31세 이상</label>
-                </div>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="age" value="25"> 25세 이하
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="age" value="30"> 30세 이하
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="age" value="31"> 31세 이상
+                </label>
             </div>
         </div>
     </div>
 
-    <!-- 이달의 추천 인재 테마 - 벚꽃 애니메이션 추가 -->
-    <div class="monthly-theme">
+    <!-- 인재 테마 섹션 -->
+    <div class="theme-section">
         <h2><span class="cherry-blossom">🌸</span> 이달의 추천 인재 테마 <span class="cherry-blossom">🌸</span></h2>
         <p>2025년 봄, 프론트엔드 개발에 특화된 인재를 소개합니다!</p>
-        <div class="blossom-container" id="blossomContainer"></div>
     </div>
 
-    <!-- 개발자 카드 섹션 - 수정된 레이아웃 -->
-    <div class="developer-container">
-        <!-- 개발자 카드 1 -->
-        <div class="developer-card" data-education="학사 졸업" data-age="28">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="1">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-<div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">홍길동 (28)</div>
-                    <div class="developer-edu">학사 졸업</div>
-                    <div class="developer-project">헬스 PT 시스템</div>
-                    <div class="developer-mbti">ISTJ</div>
-                </div>
+    <!-- 인재 카드 그리드 -->
+    <div class="cards-grid">
+        <!-- 홍길동 -->
+        <div class="student-card" data-resume="resumes/홍길동_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>홍길동 (28)</h3>
+                <p>학사 졸업</p>
+                <p>헬스 PT 시스템</p>
+                <p>ISTJ</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
 
-        <!-- 개발자 카드 2 -->
-        <div class="developer-card" data-education="전문학사 졸업" data-age="32">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="2">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-                <div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">김철수 (32)</div>
-                    <div class="developer-edu">전문학사 졸업</div>
-                    <div class="developer-project">기업 회계 시스템</div>
-                    <div class="developer-mbti">ISTJ</div>
-                </div>
+        <!-- 김철수 -->
+        <div class="student-card" data-resume="resumes/김철수_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>김철수 (32)</h3>
+                <p>전문학사 졸업</p>
+                <p>기업 회계 시스템</p>
+                <p>ISTJ</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
 
-        <!-- 개발자 카드 3 -->
-        <div class="developer-card" data-education="학사 졸업" data-age="24">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="3">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-                <div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">이영희 (24)</div>
-                    <div class="developer-edu">학사 졸업</div>
-                    <div class="developer-project">SNS 플랫폼 개발</div>
-                    <div class="developer-mbti">ENTP</div>
-                </div>
+        <!-- 이영희 -->
+        <div class="student-card" data-resume="resumes/이영희_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>이영희 (24)</h3>
+                <p>학사 졸업</p>
+                <p>SNS 플랫폼 개발</p>
+                <p>ENTP</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
 
-        <!-- 개발자 카드 4 -->
-        <div class="developer-card" data-education="고등학교 졸업" data-age="26">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="4">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-                <div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">박민수 (26)</div>
-                    <div class="developer-edu">고등학교 졸업</div>
-                    <div class="developer-project">모바일 게임 앱</div>
-                    <div class="developer-mbti">INTP</div>
-                </div>
+        <!-- 박민수 -->
+        <div class="student-card" data-resume="resumes/박민수_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>박민수 (26)</h3>
+                <p>고등학교 졸업</p>
+                <p>모바일 게임 앱</p>
+                <p>INTP</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
 
-        <!-- 개발자 카드 5 -->
-        <div class="developer-card" data-education="학사 졸업" data-age="29">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="5">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-                <div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">정지원 (29)</div>
-                    <div class="developer-edu">학사 졸업</div>
-                    <div class="developer-project">AI 기반 추천 시스템</div>
-                    <div class="developer-mbti">INTJ</div>
-                </div>
+        <!-- 정지원 -->
+        <div class="student-card" data-resume="resumes/정지원_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>정지원 (29)</h3>
+                <p>학사 졸업</p>
+                <p>AI 기반 추천 시스템</p>
+                <p>INTJ</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
 
-        <!-- 개발자 카드 6 -->
-        <div class="developer-card" data-education="전문학사 졸업" data-age="27">
-            <span class="featured-badge">이달의 추천</span>
-            <button class="card-scrap-btn" data-id="6">
-                <span class="heart-icon">❤</span>
-            </button>
-            
-            <div class="card-content">
-                <div class="profile-photo">사진</div>
-                <div class="info-container">
-                    <div class="developer-name">송미래 (27)</div>
-                    <div class="developer-edu">전문학사 졸업</div>
-                    <div class="developer-project">여행 예약 플랫폼</div>
-                    <div class="developer-mbti">ESFJ</div>
-                </div>
+        <!-- 송미래 -->
+        <div class="student-card" data-resume="resumes/송미래_이력서.pdf">
+            <button class="favorite-btn">❤</button>
+            <div class="tag">이달의 추천</div>
+            <div class="photo">사진</div>
+            <div class="info">
+                <h3>송미래 (27)</h3>
+                <p>전문학사 졸업</p>
+                <p>여행 예약 플랫폼</p>
+                <p>ESFJ</p>
             </div>
+            <button class="resume-btn">이력서 보기</button>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 필터링 기능 구현
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            const developerCards = document.querySelectorAll('.developer-card');
+            // 즐겨찾기 버튼 기능
+            const favoriteButtons = document.querySelectorAll('.favorite-btn');
             
-            // 각 체크박스에 이벤트 리스너 추가
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', filterDevelopers);
-            });
-            
-            // 필터링 함수
-            function filterDevelopers() {
-                // 선택된 필터 값들 수집
-                const selectedEducation = getSelectedValues('education');
-                const selectedAges = getSelectedValues('age');
-                
-                // 모든 개발자 카드 순회
-                developerCards.forEach(card => {
-                    // 카드에서 데이터 속성 가져오기
-                    const cardEducation = card.getAttribute('data-education');
-                    const cardAge = parseInt(card.getAttribute('data-age'));
-                    
-                    // 필터 조건 확인
-                    const educationMatch = selectedEducation.length === 0 || 
-                                          selectedEducation.includes(cardEducation);
-                                          
-                    const ageMatch = selectedAges.length === 0 || 
-                                    selectedAges.some(age => {
-                                        if (age === '25세 이하') return cardAge <= 25;
-                                        if (age === '30세 이하') return cardAge <= 30;
-                                        if (age === '31세 이상') return cardAge >= 31;
-                                        return false;
-                                    });
-                    
-                    // 모든 조건을 만족하면 카드 표시, 아니면 숨김
-                    if (educationMatch && ageMatch) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-            
-            // 선택된 체크박스 값 가져오기
-            function getSelectedValues(name) {
-                return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
-                           .map(checkbox => checkbox.value);
-            }
-            
-            // 카드 스크랩 버튼
-            const cardScrapBtns = document.querySelectorAll('.card-scrap-btn');
-            
-            cardScrapBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 카드 클릭 이벤트 전파 방지
                     this.classList.toggle('active');
-                    const heartIcon = this.querySelector('.heart-icon');
                     
                     if (this.classList.contains('active')) {
-                        heartIcon.style.color = 'white'; // 색상 변경
+                        this.style.color = '#ff6b81';
                     } else {
-                        heartIcon.style.color = '#ff6b6b'; // 원래 색상으로
+                        this.style.color = '#ccc';
                     }
                 });
             });
             
-            // 벚꽃 효과 생성
-            createCherryBlossoms();
+            // 이력서 PDF 열기 기능 - 카드 클릭 시
+            const studentCards = document.querySelectorAll('.student-card');
             
-            function createCherryBlossoms() {
-                const container = document.getElementById('blossomContainer');
-                const blossomCount = 15;
+            studentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const resumePath = this.dataset.resume;
+                    
+                    if (resumePath) {
+                        window.open(resumePath, '_blank');
+                    }
+                });
+            });
+            
+            // 이력서 버튼 클릭 시
+            const resumeButtons = document.querySelectorAll('.resume-btn');
+            
+            resumeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 카드 클릭 이벤트 전파 방지
+                    const resumePath = this.parentElement.dataset.resume;
+                    
+                    if (resumePath) {
+                        window.open(resumePath, '_blank');
+                    }
+                });
+            });
+            
+            // 필터 기능
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', filterStudents);
+            });
+            
+            function filterStudents() {
+                const selectedEducation = Array.from(document.querySelectorAll('input[name="education"]:checked')).map(cb => cb.value);
+                const selectedAges = Array.from(document.querySelectorAll('input[name="age"]:checked')).map(cb => cb.value);
                 
-                for (let i = 0; i < blossomCount; i++) {
-                    const blossom = document.createElement('div');
-                    blossom.classList.add('blossom');
+                studentCards.forEach(card => {
+                    const info = card.querySelector('.info');
+                    const educationText = info.querySelectorAll('p')[0].textContent;
+                    const ageText = info.querySelector('h3').textContent.match(/\((\d+)\)/)[1];
+                    const age = parseInt(ageText);
                     
-                    // 랜덤 사이즈, 위치, 애니메이션 시간
-                    const size = Math.random() * 10 + 5; // 5-15px
-                    const left = Math.random() * 100; // 0-100%
-                    const animationDuration = Math.random() * 8 + 8; // 8-16s
-                    const animationDelay = Math.random() * 5; // 0-5s
+                    let showByEducation = selectedEducation.length === 0 || selectedEducation.some(edu => educationText.includes(edu));
+                    let showByAge = selectedAges.length === 0;
                     
-                    blossom.style.width = `${size}px`;
-                    blossom.style.height = `${size}px`;
-                    blossom.style.left = `${left}%`;
-                    blossom.style.animationDuration = `${animationDuration}s`;
-                    blossom.style.animationDelay = `${animationDelay}s`;
+                    if (!showByAge) {
+                        if (selectedAges.includes('25') && age <= 25) showByAge = true;
+                        else if (selectedAges.includes('30') && age <= 30 && age > 25) showByAge = true;
+                        else if (selectedAges.includes('31') && age >= 31) showByAge = true;
+                    }
                     
-                    container.appendChild(blossom);
-                }
+                    card.style.display = (showByEducation && showByAge) ? 'flex' : 'none';
+                });
             }
         });
     </script>
