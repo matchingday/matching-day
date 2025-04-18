@@ -5,76 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT 도약 페이지</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #3498db;
+            --color-secondary-dark: #2980b9;
+            --color-bg: #ecf0f1;
+            --color-card-bg: #ffffff;
+            --font-family: 'Noto Sans KR', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f0f4f8;
-            color: #333;
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-primary);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
         header {
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: var(--color-card-bg);
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
         }
         header h1 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
         }
         .container {
             flex: 1;
-            width: 100%;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
         .gpt-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
         }
         .gpt-card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            padding: 20px;
+            background-color: var(--color-card-bg);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-            transition: transform 0.2s;
+            align-items: center;
         }
         .gpt-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
+        .gpt-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
         }
         .gpt-title {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: #0070f3;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
         }
         .gpt-btn {
+            margin-top: auto;
             display: inline-block;
-            padding: 10px 16px;
-            background: #0070f3;
+            background-color: var(--color-secondary);
             color: #fff;
+            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.2s;
+            transition: background-color 0.3s;
         }
         .gpt-btn:hover {
-            background: #005bb5;
+            background-color: var(--color-secondary-dark);
         }
         footer {
             text-align: center;
-            padding: 12px;
-            background: #fff;
-            font-size: 0.9rem;
-            color: #666;
-            box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+            padding: 1rem;
+            background-color: var(--color-card-bg);
+            font-size: 0.875rem;
+            color: #777;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
@@ -85,24 +105,29 @@
     <div class="container">
         <div class="gpt-grid">
             <div class="gpt-card">
-                <div class="gpt-title">AI 활용 능력</div>
-                <a href="https://chatgpt.com/g/g-6801b3f1d6288191a68edce428af0f33-ai-hwalyong-neungryeog-v1-0" class="gpt-btn" target="_blank">이동하기</a>
+                <div class="gpt-icon">🌟</div>
+                <h2 class="gpt-title">AI 활용 능력</h2>
+                <a href="https://chatgpt.com/g/g-6801b3f1d6288191a68edce428af0f33-ai-hwalyong-neungryeog-v1-0" class="gpt-btn" target="_blank">시작하기</a>
             </div>
             <div class="gpt-card">
-                <div class="gpt-title">직무 지원 동기</div>
-                <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-0" class="gpt-btn" target="_blank">이동하기</a>
+                <div class="gpt-icon">🚀</div>
+                <h2 class="gpt-title">직무 지원 동기</h2>
+                <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-0" class="gpt-btn" target="_blank">시작하기</a>
             </div>
             <div class="gpt-card">
-                <div class="gpt-title">커뮤니케이션</div>
-                <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-0" class="gpt-btn" target="_blank">이동하기</a>
+                <div class="gpt-icon">💬</div>
+                <h2 class="gpt-title">커뮤니케이션</h2>
+                <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-0" class="gpt-btn" target="_blank">시작하기</a>
             </div>
             <div class="gpt-card">
-                <div class="gpt-title">나의 장점</div>
-                <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-0" class="gpt-btn" target="_blank">이동하기</a>
+                <div class="gpt-icon">🏆</div>
+                <h2 class="gpt-title">나의 장점</h2>
+                <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-0" class="gpt-btn" target="_blank">시작하기</a>
             </div>
             <div class="gpt-card">
-                <div class="gpt-title">기술적 강점</div>
-                <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-0" class="gpt-btn" target="_blank">이동하기</a>
+                <div class="gpt-icon">⚙️</div>
+                <h2 class="gpt-title">기술적 강점</h2>
+                <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-0" class="gpt-btn" target="_blank">시작하기</a>
             </div>
         </div>
     </div>
