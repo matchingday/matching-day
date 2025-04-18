@@ -1,69 +1,72 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GPT 항목별 이동 페이지</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --color-primary: #2d3436;
-      --color-secondary: #6c5ce7;
-      --color-secondary-light: #a29bfe;
-      --color-bg: #f0f3f5;
-      --color-card: #ffffff;
-      --font-family: 'Noto Sans KR', sans-serif;
+      width: 60%;
+      height: 4px;
+      background-color: var(--clr-secondary-light);
+      border-radius: 2px;
     }
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: var(--font-family);
-      background-color: var(--color-bg);
-      color: var(--color-primary);
-      line-height: 1.6;
-      padding: 2rem 1rem;
-    }
-    header {
-      background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-light));
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .sections-wrapper {
+    .section-content {
+      padding: 1.5rem;
       display: flex;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1rem;
     }
-    .section {
-      flex: 1 1 calc(33.333% - 1rem);
-      background-color: var(--color-card);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+    .gpt-item {
+      padding: 0.6rem 1rem;
+      background-color: var(--clr-bg);
+      border: 2px solid var(--clr-secondary);
+      border-radius: 999px;
+      color: var(--clr-secondary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      flex: none;
     }
-    .section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    .gpt-item:hover {
+      background-color: var(--clr-secondary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
     }
-    .section-header {
-      padding: 1rem;
+    footer {
       text-align: center;
-      font-size: 1.2rem;
+      color: #636e72;
+      font-size: 0.875rem;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .section { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>자기소개서 GPT 항목별 이동</h1>
+  </header>
+  <div class="container">
+    <div class="sections-wrapper">
+      <div class="section">
+        <div class="section-header">태도 항목 GPTS</div>
+        <div class="section-content">
+          <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-0" class="gpt-item" target="_blank">나의 장점 v1.0</a>
+          <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-0" class="gpt-item" target="_blank">커뮤니케이션 능력 v1.0</a>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">기술 역량 항목 GPTS</div>
+        <div class="section-content">
+          <a href="https://chatgpt.com/g/g-6801b3f1d6288191a68edce428af0f33-ai-hwalyong-neungryeog-v1-0" class="gpt-item" target="_blank">AI 활용 능력 v1.0</a>
+          <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-0" class="gpt-item" target="_blank">나의 기술적 강점 v1.0</a>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">지원 회사 관심 항목 GPTS</div>
+        <div class="section-content">
+          <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-0" class="gpt-item" target="_blank">직무 지원 동기 및 포부</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 개발자 매칭데이</footer>
+</body>
+</html>
