@@ -1,92 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GPT 항목별 이동 페이지</title>
-    <style>
-        :root {
-            --color-primary: #2c3e50;
-            --color-accent: #3498db;
-            --color-bg: #f7f9fc;
-            --border-section: #cccccc;
-            --font-family: 'Noto Sans KR', sans-serif;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: var(--font-family);
-            background-color: var(--color-bg);
-            color: var(--color-primary);
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        header h1 {
-            font-size: 2rem;
-            letter-spacing: 1px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .sections-wrapper {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        .section-header {
-            border: 1px solid var(--border-section);
-            border-radius: 6px;
-            padding: 0.75rem;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            background-color: #fff;
-        }
-        .section-content {
-            border: 1px solid var(--border-section);
-            border-radius: 6px;
-            padding: 1rem;
-            background-color: #fff;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-        }
-        .section-content.attitude,
-        .section-content.tech {
-            justify-content: space-around;
-        }
-        .section-content.interest {
-            justify-content: flex-start;
-        }
-        .gpt-item {
-            display: inline-block;
-            border: 2px solid var(--color-accent);
-            border-radius: 4px;
             padding: 0.75rem 1rem;
+            border: 2px solid var(--clr-secondary);
+            border-radius: 6px;
+            color: var(--clr-secondary);
+            font-weight: 500;
             text-decoration: none;
-            font-size: 1rem;
-            color: var(--color-primary);
             transition: background-color 0.3s, color 0.3s;
-            width: fit-content;
         }
         .gpt-item:hover {
-            background-color: var(--color-accent);
+            background-color: var(--clr-secondary);
             color: #ffffff;
         }
         footer {
             text-align: center;
             padding: 1rem 0;
-            font-size: 0.85rem;
-            color: #777;
+            color: #636e72;
+            font-size: 0.875rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -96,22 +26,25 @@
     </header>
     <div class="container">
         <div class="sections-wrapper">
-            <!-- 섹션 헤더 -->
-            <div class="section-header">태도 항목 GPTS</div>
-            <div class="section-header">기술 역량 항목 GPTS</div>
-            <div class="section-header">지원 회사 관심 항목 GPTS</div>
-
-            <!-- 섹션 내용 -->
-            <div class="section-content attitude">
-                <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-0" class="gpt-item" target="_blank">나의 장점 v1.0</a>
-                <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-0" class="gpt-item" target="_blank">커뮤니케이션 능력 v1.0</a>
+            <div class="section">
+                <div class="section-header">태도 항목 GPTS</div>
+                <div class="section-content attitude">
+                    <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-0" class="gpt-item" target="_blank">나의 장점 v1.0</a>
+                    <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-0" class="gpt-item" target="_blank">커뮤니케이션 능력 v1.0</a>
+                </div>
             </div>
-            <div class="section-content tech">
-                <a href="https://chatgpt.com/g/g-6801b3f1d6288191a68edce428af0f33-ai-hwalyong-neungryeog-v1-0" class="gpt-item" target="_blank">AI 활용 능력 v1.0</a>
-                <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-0" class="gpt-item" target="_blank">나의 기술적 강점 v1.0</a>
+            <div class="section">
+                <div class="section-header">기술 역량 항목 GPTS</div>
+                <div class="section-content tech">
+                    <a href="https://chatgpt.com/g/g-6801b3f1d6288191a68edce428af0f33-ai-hwalyong-neungryeog-v1-0" class="gpt-item" target="_blank">AI 활용 능력 v1.0</a>
+                    <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-0" class="gpt-item" target="_blank">나의 기술적 강점 v1.0</a>
+                </div>
             </div>
-            <div class="section-content interest">
-                <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-0" class="gpt-item" target="_blank">직무 지원 동기 및 포부</a>
+            <div class="section">
+                <div class="section-header">지원 회사 관심 항목 GPTS</div>
+                <div class="section-content interest">
+                    <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-0" class="gpt-item" target="_blank">직무 지원 동기 및 포부</a>
+                </div>
             </div>
         </div>
     </div>
