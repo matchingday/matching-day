@@ -38,48 +38,38 @@
       flex-direction: column;
       transition: background 0.3s, color 0.3s;
     }
-/* ─── 제목은 중앙, 토글은 오른쪽 ─── */
-header {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;   /* flex-end로 토글만 오른쪽으로 */
-  align-items: center;
-  padding: 30px 20px;
-  background: var(--header-bg);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px var(--card-shadow);
-}
 
-/* h1을 절대 위치로 뺀 뒤 가로 중앙 정렬 */
-header h1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-color);
-}
-
-
-
+    /* ─── 헤더 ─── */
+    header {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;    /* 토글은 오른쪽 끝 */
+      align-items: center;
+      padding: 30px 20px;
+      background: var(--header-bg);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px var(--card-shadow);
+    }
+    /* 제목 중앙 고정 */
     header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
       font-size: 2rem;
       font-weight: 700;
       color: var(--text-color);
     }
 
     /* ─── 다크모드 토글 ─── */
-/* ─── 토글 스위치를 문서 흐름에 따라 배치 ─── */
-.theme-switch {
-  position: static;       /* 절대 위치 제거 */
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  font-size: 0.9rem;
-}
-
+    .theme-switch {
+      position: static;       /* 절대 위치 제거 */
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+    }
     .theme-switch input { display: none; }
     .theme-switch .slider {
       width: 40px; height: 20px;
@@ -104,71 +94,87 @@ header h1 {
       color: var(--text-color);
     }
 
-   /* ─── 반응형 Grid (auto-fit + minmax) ─── */
-.container {
-  display: grid;
-  /* 최소 280px, 최대 1fr씩 채우기. fit 가능한 만큼 열 생성 */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1280px;
-  margin: 40px auto;
-  padding: 0 24px;
-}
+    /* ─── 반응형 Grid (auto-fit + minmax) ─── */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    /* 데스크탑용: 3열 고정 + 4번째 박스만 2span */
+    @media (min-width: 900px) {
+      .container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .container .category-box:nth-child(4) {
+        grid-column: span 2;
+      }
+    }
 
-/* 데스크탑용: 3열 고정 + 4번째 박스만 2span */
-@media (min-width: 900px) {
-  .container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .container .category-box:nth-child(4) {
-    grid-column: span 2;
-  }
-}
+    /* ─── 모바일(≤600px) 헤더 및 카드 스타일 ─── */
+    @media (max-width: 600px) {
+      /* 헤더: 무조건 한 줄, 제목+토글 가로 배치 */
+      header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 12px;
+      }
+      header h1 {
+        position: static;
+        transform: none;
+        order: 1;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.6rem;
+        margin: 0;
+        text-align: left;
+      }
+      .theme-switch {
+        order: 2;
+        margin: 0;
+        flex: none;
+      }
 
-/* 기존 @media (max-width:600px) 블록 안을 이걸로 교체하세요 */
-@media (max-width: 600px) {
-  .container {
-    /* 1열→2열 */
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px;       /* 카드 간격 축소 */
-    padding: 0 8px;  /* 좌우 여백 축소 */
-  }
+      /* 컨테이너: PC와 동일 3열 고정, span 유지 */
+      .container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-auto-rows: auto;
+        gap: 12px;
+        padding: 8px;
+      }
+      .container .category-box:nth-child(4) {
+        grid-column: span 2 !important;
+      }
 
-  /* 4번째 박스 span 해제 */
-  .container .category-box:nth-child(4) {
-    grid-column: auto !important;
-  }
+      /* 카드 & 텍스트 & 버튼 크기 축소 */
+      .category-box {
+        padding: 12px;
+      }
+      .category-title {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+      .gpt-card {
+        padding: 8px;
+        margin-bottom: 8px;
+      }
+      .gpt-card p {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      .btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+      }
+    }
 
-  /* 카드 전체 패딩 줄이기 */
-  .category-box {
-    padding: 16px;
-  }
-
-  /* 제목 크기/여백 조정 */
-  .category-title {
-    font-size: 1rem;
-    margin-bottom: 16px;
-  }
-
-  /* GPT 카드 크기 줄이기 */
-  .gpt-card {
-    padding: 8px;
-    margin-bottom: 8px;
-  }
-  .gpt-card p {
-    font-size: 0.875rem;
-    margin-bottom: 8px;
-  }
-
-  /* 버튼도 작게 */
-  .btn {
-    padding: 4px 8px;
-    font-size: 0.8rem;
-  }
-}
-
-
-    /* ─── 카드 스타일 ─── */
+    /* ─── 카드 스타일 공통 ─── */
     .category-box {
       background: var(--card-bg);
       border-radius: 20px;
@@ -221,48 +227,13 @@ header h1 {
     .btn:hover {
       opacity: 0.9;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.85rem;
       color: var(--text-color);
     }
-    /* ─── 모바일(≤600px)에서 PC와 같은 3열 2행 레이아웃 고정 ─── */
-@media (max-width: 600px) {
-  .container {
-    /* 1열→3열 유지, PC와 같게 */
-    grid-template-columns: repeat(3, 1fr) !important;
-    grid-auto-rows: auto;      /* 행 높이는 콘텐츠에 맞게 */
-    gap: 12px;                  /* 간격 축소 */
-    padding: 8px;               /* 좌우 여백 축소 */
-  }
-  /* 4번째 박스도 span 2 그대로 유지 */
-  .container .category-box:nth-child(4) {
-    grid-column: span 2 !important;
-  }
-
-  /* 카드 전체 여백/패딩 최소화 */
-  .category-box {
-    padding: 12px;
-  }
-  .category-title {
-    font-size: 1rem;
-    margin-bottom: 12px;
-  }
-  .gpt-card {
-    padding: 8px;
-    margin-bottom: 8px;
-  }
-  .gpt-card p {
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-  }
-  .btn {
-    padding: 4px 8px;
-    font-size: 0.75rem;
-  }
-}
-
   </style>
 </head>
 <body>
