@@ -227,6 +227,42 @@ header h1 {
       font-size: 0.85rem;
       color: var(--text-color);
     }
+    /* ─── 모바일(≤600px)에서 PC와 같은 3열 2행 레이아웃 고정 ─── */
+@media (max-width: 600px) {
+  .container {
+    /* 1열→3열 유지, PC와 같게 */
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-auto-rows: auto;      /* 행 높이는 콘텐츠에 맞게 */
+    gap: 12px;                  /* 간격 축소 */
+    padding: 8px;               /* 좌우 여백 축소 */
+  }
+  /* 4번째 박스도 span 2 그대로 유지 */
+  .container .category-box:nth-child(4) {
+    grid-column: span 2 !important;
+  }
+
+  /* 카드 전체 여백/패딩 최소화 */
+  .category-box {
+    padding: 12px;
+  }
+  .category-title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  .gpt-card {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  .gpt-card p {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
+
   </style>
 </head>
 <body>
