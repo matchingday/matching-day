@@ -44,7 +44,7 @@
       transition: background .3s, color .3s;
     }
 
-    /* ─── 헤더 ─── */
+    /* ─── 헤더 (PC 공통) ─── */
     header {
       position: relative;
       display: flex;
@@ -55,18 +55,15 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px var(--card-shadow);
     }
-  header h1 {
-    position: static;
-    transform: none;
-    order: 1;
-    flex: 1 1 auto;           /* 공간에 맞춰 축소 허용 */
-    white-space: nowrap;      /* 줄바꿈 금지 */
-    overflow: visible;        /* 숨김 해제 */
-    text-overflow: clip;      /* 말줄임 해제 */
-    font-size: 1.4rem;        /* 화면에 딱 맞게 글자 크기 조절 */
-    margin: 0;
-    text-align: left;
-  }
+    header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin: 0;
+    }
 
     /* ─── 다크모드 토글 ─── */
     .theme-switch {
@@ -114,33 +111,32 @@
       }
     }
 
-    /* ─── 모바일(≤600px): 1열 ─── */
+    /* ─── 모바일(≤600px) ─── */
     @media (max-width: 600px) {
-      /* 헤더 가로 한 줄 고정 */
-  header {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 12px;
-  }
-  header h1 {
-    position: static;
-    transform: none;
-    order: 1;
-    flex: 1;
-    white-space: normal;      /* 줄바꿈 허용 */
-    overflow: visible;        /* 잘림 해제 */
-    text-overflow: clip;
-    font-size: 1.6rem;
-    text-align: center;       /* 가운데 정렬 */
-    margin: 0;
-  }
-  .theme-switch {
-    order: 2;
-    margin: 0;
-    flex: none;
-  }
-      .theme-switch { margin: 0; flex: none; }
+      /* 헤더 한 줄 고정 */
+      header {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 12px;
+      }
+      header h1 {
+        position: static;
+        transform: none;
+        order: 1;
+        flex: 1 1 auto;
+        white-space: nowrap;      /* 한 줄로 고정 */
+        overflow: visible;        /* 잘림 해제 */
+        text-overflow: clip;      /* 말줄임 해제 */
+        font-size: 1.4rem;        /* 필요 시 1.3rem~1.2rem 조정 */
+        margin: 0;
+        text-align: left;
+      }
+      .theme-switch {
+        order: 2;
+        margin: 0;
+        flex: none;
+      }
 
       /* 컨테이너 1열로 변경 */
       .container {
@@ -276,17 +272,17 @@
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
     const saved = localStorage.getItem('theme');
-    if (saved==='dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark');
       toggle.checked = true;
     }
-    toggle.addEventListener('change', ()=>{
-      if(toggle.checked){
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
         body.classList.add('dark');
-        localStorage.setItem('theme','dark');
+        localStorage.setItem('theme', 'dark');
       } else {
         body.classList.remove('dark');
-        localStorage.setItem('theme','light');
+        localStorage.setItem('theme', 'light');
       }
     });
   </script>
