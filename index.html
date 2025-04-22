@@ -1,173 +1,4 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Career GPTS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ─── 테마 변수 정의 ─── */
-    :root {
-      --bg-gradient: linear-gradient(135deg, #eaf1f8, #f8fbff);
-      --text-color: #333;
-      --header-bg: #ffffffcc;
-      --card-bg: #fff;
-      --card-shadow: rgba(0, 0, 0, 0.08);
-      --frost: #f7f9fc;
-      --btn-bg: #0366d6;
-      --btn-color: #fff;
-    }
-    .dark {
-      --bg-gradient: linear-gradient(135deg, #2b2b2b, #1a1a1a);
-      --text-color: #ddd;
-      --header-bg: rgba(30,30,30,0.8);
-      --card-bg: #222;
-      --card-shadow: rgba(0, 0, 0, 0.5);
-      --frost: #2a2a2a;
-      --btn-bg: #4a90e2;
-      --btn-color: #fff;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.3s, color 0.3s;
-    }
-    header {
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--card-shadow);
-      position: relative;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-color);
-    }
-
-    /* ─── 다크모드 토글 스위치 ─── */
-    .theme-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-      font-size: 0.9rem;
-    }
-    .theme-switch input {
-      display: none;
-    }
-    .theme-switch .slider {
-      width: 40px;
-      height: 20px;
-      background: #bbb;
-      border-radius: 10px;
-      position: relative;
-      transition: background 0.3s;
-      margin-right: 8px;
-    }
-    .theme-switch .slider::after {
-      content: '';
-      width: 16px;
-      height: 16px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      transition: transform 0.3s;
-    }
-    .theme-switch input:checked + .slider {
-      background: var(--btn-bg);
-    }
-    .theme-switch input:checked + .slider::after {
-      transform: translateX(20px);
-    }
-    .theme-switch span {
-      color: var(--text-color);
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      max-width: 1280px;
-      margin: 40px auto;
-      padding: 0 24px;
-      flex-wrap: wrap;
-    }
-    .category-box {
-      flex: 1;
-      min-width: 280px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 24px var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-    }
-    .category-box:hover {
-      transform: translateY(-4px);
-    }
-    .category-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-color);
-      margin-bottom: 24px;
-    }
-    .gpt-card {
-      background: var(--frost);
-      border-radius: 12px;
-      width: 100%;
-      padding: 16px;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: background 0.3s;
-    }
-    .gpt-card:last-child {
-      margin-bottom: 0;
-    }
-    .gpt-card p {
-      font-size: 1rem;
-      color: var(--text-color);
-      margin-bottom: 12px;
-    }
-    .btn {
-      background: var(--btn-bg);
-      color: var(--btn-color);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      opacity: 0.9;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.85rem;
-      color: var(--text-color);
-    }
-  </style>
-</head>
-<body>
-  <header>
     <h1>SOL Career Automation</h1>
     <label class="theme-switch">
       <input type="checkbox" id="theme-toggle">
@@ -213,7 +44,7 @@
     </div>
 
     <!-- 이력서·자소서·포트폴리오 분석 -->
-    <div class="category-box" style="flex:2; min-width:600px;">
+    <div class="category-box full-width">
       <div class="category-title">이력서·자기소개서·포트폴리오 분석</div>
       <div class="gpt-card">
         <p>커리어 컨설턴트 v1.3</p>
@@ -222,7 +53,7 @@
     </div>
 
     <!-- 잡플래닛 기업 분석 -->
-    <div class="category-box">
+    <div class="category-box full-width">
       <div class="category-title">잡플래닛 기업 분석</div>
       <div class="gpt-card">
         <p>기업 분석 v1.3</p>
