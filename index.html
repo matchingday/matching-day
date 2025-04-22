@@ -52,7 +52,7 @@
       color: var(--text-color);
     }
 
-    /* ─── 다크모드 토글 스위치 ─── */
+    /* ─── 다크모드 토글 ─── */
     .theme-switch {
       position: absolute;
       top: 20px;
@@ -63,27 +63,18 @@
       user-select: none;
       font-size: 0.9rem;
     }
-    .theme-switch input {
-      display: none;
-    }
+    .theme-switch input { display: none; }
     .theme-switch .slider {
-      width: 40px;
-      height: 20px;
-      background: #bbb;
-      border-radius: 10px;
-      position: relative;
-      transition: background 0.3s;
+      width: 40px; height: 20px;
+      background: #bbb; border-radius: 10px;
+      position: relative; transition: background 0.3s;
       margin-right: 8px;
     }
     .theme-switch .slider::after {
       content: '';
-      width: 16px;
-      height: 16px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-      top: 2px;
-      left: 2px;
+      width: 16px; height: 16px;
+      background: #fff; border-radius: 50%;
+      position: absolute; top: 2px; left: 2px;
       transition: transform 0.3s;
     }
     .theme-switch input:checked + .slider {
@@ -96,18 +87,32 @@
       color: var(--text-color);
     }
 
+    /* ─── Grid 레이아웃 ─── */
     .container {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       max-width: 1280px;
       margin: 40px auto;
       padding: 0 24px;
-      flex-wrap: wrap;
     }
+    /* 4번째 박스만 2열 span */
+    .container .category-box:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    /* ─── 반응형: 모바일에서는 1열 ─── */
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .container .category-box:nth-child(4) {
+        grid-column: auto;
+      }
+    }
+
+    /* ─── 카드 스타일 ─── */
     .category-box {
-      flex: 1;
-      min-width: 280px;
       background: var(--card-bg);
       border-radius: 20px;
       padding: 24px;
@@ -125,6 +130,7 @@
       font-weight: 600;
       color: var(--text-color);
       margin-bottom: 24px;
+      text-align: center;
     }
     .gpt-card {
       background: var(--frost);
@@ -177,7 +183,7 @@
   </header>
 
   <div class="container">
-    <!-- 태도 및 강점 -->
+    <!-- 1. 태도 및 강점 -->
     <div class="category-box">
       <div class="category-title">소주제: 태도 및 강점</div>
       <div class="gpt-card">
@@ -190,7 +196,7 @@
       </div>
     </div>
 
-    <!-- 기술 역량 -->
+    <!-- 2. 기술 역량 -->
     <div class="category-box">
       <div class="category-title">소주제: 기술 역량</div>
       <div class="gpt-card">
@@ -203,7 +209,7 @@
       </div>
     </div>
 
-    <!-- 지원 동기 -->
+    <!-- 3. 지원 동기 -->
     <div class="category-box">
       <div class="category-title">소주제: 지원 동기</div>
       <div class="gpt-card">
@@ -212,8 +218,8 @@
       </div>
     </div>
 
-    <!-- 이력서·자소서·포트폴리오 분석 -->
-    <div class="category-box" style="flex:2; min-width:600px;">
+    <!-- 4. 이력서·자기소개서·포트폴리오 분석 (2열 span) -->
+    <div class="category-box">
       <div class="category-title">이력서·자기소개서·포트폴리오 분석</div>
       <div class="gpt-card">
         <p>커리어 컨설턴트 v1.3</p>
@@ -221,7 +227,7 @@
       </div>
     </div>
 
-    <!-- 잡플래닛 기업 분석 -->
+    <!-- 5. 잡플래닛 기업 분석 -->
     <div class="category-box">
       <div class="category-title">잡플래닛 기업 분석</div>
       <div class="gpt-card">
@@ -238,13 +244,11 @@
   <script>
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
-    // 초기 상태 읽어오기
     const saved = localStorage.getItem('theme');
     if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark');
       toggle.checked = true;
     }
-    // 토글 이벤트
     toggle.addEventListener('change', () => {
       if (toggle.checked) {
         body.classList.add('dark');
