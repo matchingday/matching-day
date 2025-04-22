@@ -125,14 +125,45 @@ header h1 {
   }
 }
 
-/* ─── 3) 모바일(≤600px) 오버라이드 ─── */
+/* 기존 @media (max-width:600px) 블록 안을 이걸로 교체하세요 */
 @media (max-width: 600px) {
   .container {
-    padding: 0 12px;
-    gap: 16px;
+    /* 1열→2열 */
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;       /* 카드 간격 축소 */
+    padding: 0 8px;  /* 좌우 여백 축소 */
   }
+
+  /* 4번째 박스 span 해제 */
   .container .category-box:nth-child(4) {
-    grid-column: auto;  /* span 해제 */
+    grid-column: auto !important;
+  }
+
+  /* 카드 전체 패딩 줄이기 */
+  .category-box {
+    padding: 16px;
+  }
+
+  /* 제목 크기/여백 조정 */
+  .category-title {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  /* GPT 카드 크기 줄이기 */
+  .gpt-card {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  .gpt-card p {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+  }
+
+  /* 버튼도 작게 */
+  .btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
   }
 }
 
