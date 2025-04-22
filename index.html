@@ -2,17 +2,24 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <!-- 반드시 viewport 선언 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career GPTS</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ─── Prevent horizontal overflow ─── */
+    html, body {
+      margin: 0; padding: 0;
+      overflow-x: hidden;
+    }
+
     /* ─── 테마 변수 정의 ─── */
     :root {
       --bg-gradient: linear-gradient(135deg, #eaf1f8, #f8fbff);
       --text-color: #333;
       --header-bg: #ffffffcc;
       --card-bg: #fff;
-      --card-shadow: rgba(0, 0, 0, 0.08);
+      --card-shadow: rgba(0,0,0,0.08);
       --frost: #f7f9fc;
       --btn-bg: #0366d6;
       --btn-color: #fff;
@@ -22,67 +29,63 @@
       --text-color: #ddd;
       --header-bg: rgba(30,30,30,0.8);
       --card-bg: #222;
-      --card-shadow: rgba(0, 0, 0, 0.5);
+      --card-shadow: rgba(0,0,0,0.5);
       --frost: #2a2a2a;
       --btn-bg: #4a90e2;
       --btn-color: #fff;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: var(--bg-gradient);
       color: var(--text-color);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.3s, color 0.3s;
+      display: flex; flex-direction: column;
+      transition: background .3s, color .3s;
     }
 
     /* ─── 헤더 ─── */
     header {
       position: relative;
       display: flex;
-      justify-content: flex-end;    /* 토글은 오른쪽 끝 */
+      justify-content: flex-end;  /* 토글은 우측 */
       align-items: center;
       padding: 30px 20px;
       background: var(--header-bg);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px var(--card-shadow);
     }
-    /* 제목 중앙 고정 */
     header h1 {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 0;
       font-size: 2rem;
       font-weight: 700;
       color: var(--text-color);
+      margin: 0;
     }
 
     /* ─── 다크모드 토글 ─── */
     .theme-switch {
-      position: static;       /* 절대 위치 제거 */
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-      font-size: 0.9rem;
+      position: static;
+      display: flex; align-items: center;
+      cursor: pointer; user-select: none;
+      font-size: .9rem;
     }
     .theme-switch input { display: none; }
     .theme-switch .slider {
       width: 40px; height: 20px;
       background: #bbb; border-radius: 10px;
-      position: relative; transition: background 0.3s;
-      margin-right: 8px;
+      margin-right: 8px; position: relative;
+      transition: background .3s;
     }
     .theme-switch .slider::after {
       content: '';
       width: 16px; height: 16px;
       background: #fff; border-radius: 50%;
-      position: absolute; top: 2px; left: 2px;
-      transition: transform 0.3s;
+      position: absolute; top:2px; left:2px;
+      transition: transform .3s;
     }
     .theme-switch input:checked + .slider {
       background: var(--btn-bg);
@@ -90,129 +93,96 @@
     .theme-switch input:checked + .slider::after {
       transform: translateX(20px);
     }
-    .theme-switch span {
-      color: var(--text-color);
-    }
+    .theme-switch span { color: var(--text-color); }
 
-    /* ─── 반응형 Grid (auto-fit + minmax) ─── */
+    /* ─── Grid 레이아웃 ─── */
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
       gap: 24px;
       max-width: 1280px;
       margin: 40px auto;
       padding: 0 24px;
     }
-    /* 데스크탑용: 3열 고정 + 4번째 박스만 2span */
+    /* PC: 3열 + 4번째 박스 2span */
     @media (min-width: 900px) {
-      .container {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .container { grid-template-columns: repeat(3,1fr); }
       .container .category-box:nth-child(4) {
         grid-column: span 2;
       }
     }
 
-    /* ─── 모바일(≤600px) 헤더 및 카드 스타일 ─── */
+    /* ─── 모바일(≤600px) ─── */
     @media (max-width: 600px) {
-      /* 헤더: 무조건 한 줄, 제목+토글 가로 배치 */
+      /* 헤더 한 줄 고정 */
       header {
-        display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
-        align-items: center;
         padding: 16px 12px;
       }
       header h1 {
-        position: static;
-        transform: none;
-        order: 1;
-        flex: 1;
+        position: static; transform: none;
+        order: 1; flex: 1;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 1.6rem;
-        margin: 0;
-        text-align: left;
+        overflow: hidden; text-overflow: ellipsis;
+        font-size: 1.6rem; text-align: left;
       }
       .theme-switch {
-        order: 2;
-        margin: 0;
-        flex: none;
+        order: 2; margin: 0; flex: none;
       }
 
-      /* 컨테이너: PC와 동일 3열 고정, span 유지 */
+      /* 2열 그리드로 변경 */
       .container {
-        grid-template-columns: repeat(3, 1fr) !important;
-        grid-auto-rows: auto;
+        grid-template-columns: repeat(2,1fr) !important;
         gap: 12px;
-        padding: 8px;
+        padding: 0 8px;
+        margin: 20px auto; 
       }
+      /* span 해제 */
       .container .category-box:nth-child(4) {
-        grid-column: span 2 !important;
+        grid-column: auto !important;
       }
 
-      /* 카드 & 텍스트 & 버튼 크기 축소 */
-      .category-box {
-        padding: 12px;
-      }
-      .category-title {
-        font-size: 1rem;
-        margin-bottom: 12px;
-      }
-      .gpt-card {
-        padding: 8px;
-        margin-bottom: 8px;
-      }
-      .gpt-card p {
-        font-size: 0.85rem;
-        margin-bottom: 6px;
-      }
-      .btn {
-        padding: 4px 8px;
-        font-size: 0.75rem;
-      }
+      /* 카드·텍스트·버튼 축소 */
+      .category-box      { padding: 16px; }
+      .category-title    { font-size: 1rem; margin-bottom: 12px; }
+      .gpt-card          { padding: 8px; margin-bottom: 8px; }
+      .gpt-card p        { font-size: .85rem; margin-bottom: 6px; }
+      .btn               { padding: 4px 8px; font-size: .75rem; }
     }
 
-    /* ─── 카드 스타일 공통 ─── */
+    /* ─── 카드 기본 스타일 ─── */
     .category-box {
       background: var(--card-bg);
       border-radius: 20px;
-      padding: 24px;
       box-shadow: 0 10px 24px var(--card-shadow);
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       align-items: center;
-      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      transition: transform .3s;
+      padding: 24px;
     }
-    .category-box:hover {
-      transform: translateY(-4px);
-    }
+    .category-box:hover { transform: translateY(-4px); }
     .category-title {
       font-size: 1.2rem;
       font-weight: 600;
-      color: var(--text-color);
       margin-bottom: 24px;
+      color: var(--text-color);
       text-align: center;
     }
     .gpt-card {
       background: var(--frost);
       border-radius: 12px;
-      width: 100%;
-      padding: 16px;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
+      width: 100%; padding: 16px;
+      display: flex; flex-direction: column;
       align-items: center;
-      transition: background 0.3s;
+      margin-bottom: 16px;
+      transition: background .3s;
     }
-    .gpt-card:last-child {
-      margin-bottom: 0;
-    }
+    .gpt-card:last-child { margin-bottom: 0; }
     .gpt-card p {
-      font-size: 1rem;
       color: var(--text-color);
       margin-bottom: 12px;
+      font-size: 1rem;
     }
     .btn {
       background: var(--btn-bg);
@@ -220,18 +190,16 @@
       border: none;
       padding: 8px 16px;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: .9rem;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background .3s;
     }
-    .btn:hover {
-      opacity: 0.9;
-    }
+    .btn:hover { opacity: .9; }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: var(--text-color);
     }
   </style>
@@ -259,7 +227,6 @@
         <button class="btn">이동하기</button>
       </div>
     </div>
-
     <!-- 2. 기술 역량 -->
     <div class="category-box">
       <div class="category-title">소주제: 기술 역량</div>
@@ -272,7 +239,6 @@
         <button class="btn">이동하기</button>
       </div>
     </div>
-
     <!-- 3. 지원 동기 -->
     <div class="category-box">
       <div class="category-title">소주제: 지원 동기</div>
@@ -281,8 +247,7 @@
         <button class="btn">이동하기</button>
       </div>
     </div>
-
-    <!-- 4. 이력서·자기소개서·포트폴리오 분석 (2열 span) -->
+    <!-- 4. 이력서·자기소개서·포트폴리오 분석 -->
     <div class="category-box">
       <div class="category-title">이력서·자기소개서·포트폴리오 분석</div>
       <div class="gpt-card">
@@ -290,7 +255,6 @@
         <button class="btn">이동하기</button>
       </div>
     </div>
-
     <!-- 5. 잡플래닛 기업 분석 -->
     <div class="category-box">
       <div class="category-title">잡플래닛 기업 분석</div>
@@ -309,17 +273,17 @@
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
     const saved = localStorage.getItem('theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (saved==='dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark');
       toggle.checked = true;
     }
-    toggle.addEventListener('change', () => {
-      if (toggle.checked) {
+    toggle.addEventListener('change', ()=>{
+      if(toggle.checked){
         body.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
+        localStorage.setItem('theme','dark');
       } else {
         body.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
+        localStorage.setItem('theme','light');
       }
     });
   </script>
