@@ -125,27 +125,14 @@ header h1 {
   }
 }
 
-/* (이전 모바일 오버라이드는 제거해주세요) */
-
-
-/* ─── 모바일(≤600px) 전용 ─── */
+/* ─── 3) 모바일(≤600px) 오버라이드 ─── */
 @media (max-width: 600px) {
-  header {
-    justify-content: center;  /* 토글도 아래로 내려가기 전까지 중앙 */
+  .container {
+    padding: 0 12px;
+    gap: 16px;
   }
-  header h1 {
-    position: static;        /* 절대 위치 해제 */
-    transform: none;
-    width: 100%;
-    text-align: center;
-    font-size: 1.8rem;
-    order: 1;
-  }
-  .theme-switch {
-    order: 2;
-    width: 100%;
-    margin: 10px 0 0;
-    text-align: center;
+  .container .category-box:nth-child(4) {
+    grid-column: auto;  /* span 해제 */
   }
 }
 
