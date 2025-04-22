@@ -3,19 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>매칭데이 GPT</title>
+  <title>SOL Career Automation</title>
   <style>
-    /* ─── (필요 시) CSS 변수 정의 ─── */
+    /* ─── CSS 변수 (라이트/다크 공용) ─── */
     :root {
+      --bg-color: #f0f4f8;
       --header-bg: rgba(255,255,255,0.8);
-      --card-shadow: rgba(0,0,0,0.1);
-      --text-color: #333;
-      --btn-bg: #0066ff;
-      --btn-color: #fff;
-      --card-bg: #fff;
+      --card-bg: #ffffff;
       --frost: rgba(255,255,255,0.6);
+      --card-shadow: rgba(0,0,0,0.1);
+      --text-color: #333333;
+      --btn-bg: #0066ff;
+      --btn-color: #ffffff;
+    }
+    /* ─── 다크 모드용 변수 재정의 ─── */
+    body.dark {
+      --bg-color: #121212;
+      --header-bg: rgba(20,20,20,0.8);
+      --card-bg: #1e1e1e;
+      --frost: rgba(255,255,255,0.1);
+      --card-shadow: rgba(0,0,0,0.5);
+      --text-color: #eeeeee;
+      --btn-bg: #2196f3;
+      --btn-color: #ffffff;
     }
 
+    /* ─── 기본 레이아웃 ─── */
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background .3s, color .3s;
+      font-family: sans-serif;
+    }
     header {
       position: relative;
       display: flex;
@@ -32,8 +52,8 @@
       transform: translateX(-50%);
       font-size: 2rem;
       font-weight: 700;
-      color: var(--text-color);
       margin: 0;
+      color: var(--text-color);
     }
 
     /* ─── 다크모드 토글 ─── */
@@ -47,14 +67,17 @@
     .theme-switch input { display: none; }
     .theme-switch .slider {
       width: 40px; height: 20px;
-      background: #bbb; border-radius: 10px;
-      margin-right: 8px; position: relative;
+      background: #bbb;
+      border-radius: 10px;
+      margin-right: 8px;
+      position: relative;
       transition: background .3s;
     }
     .theme-switch .slider::after {
       content: '';
       width: 16px; height: 16px;
-      background: #fff; border-radius: 50%;
+      background: #fff;
+      border-radius: 50%;
       position: absolute; top:2px; left:2px;
       transition: transform .3s;
     }
@@ -85,16 +108,12 @@
     /* ─── 모바일(≤600px) ─── */
     @media (max-width: 600px) {
       header h1 {
-        overflow: visible;
-        text-overflow: clip;
         font-size: 1.6rem;
-        margin: 0;
         text-align: center;
       }
       .theme-switch {
         margin-top: 8px;
         order: 2;
-        flex: none;
         text-align: center;
       }
       .container {
@@ -113,7 +132,7 @@
       .btn { padding: 4px 8px; font-size: .75rem; }
     }
 
-    /* ─── 카드 기본 스타일 ─── */
+    /* ─── 카드 스타일 ─── */
     .category-box {
       background: var(--card-bg);
       border-radius: 20px;
@@ -125,28 +144,38 @@
     }
     .category-box:hover { transform: translateY(-4px); }
     .category-title {
-      font-size: 1.2rem; font-weight: 600;
-      margin-bottom: 24px; text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
       color: var(--text-color);
     }
     .gpt-card {
       background: var(--frost);
-      border-radius: 12px; width: 100%;
-      padding: 16px; display: flex;
-      flex-direction: column; align-items: center;
-      margin-bottom: 16px; transition: background .3s;
+      border-radius: 12px;
+      width: 100%;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+      transition: background .3s;
     }
     .gpt-card:last-child { margin-bottom: 0; }
     .gpt-card p {
       color: var(--text-color);
-      margin-bottom: 12px; font-size: 1rem;
+      margin-bottom: 12px;
+      font-size: 1rem;
     }
     .btn {
       background: var(--btn-bg);
       color: var(--btn-color);
-      border: none; padding: 8px 16px;
-      border-radius: 8px; font-size: .9rem;
-      cursor: pointer; transition: background .3s;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: background .3s;
     }
     .btn:hover { opacity: .9; }
 
@@ -160,7 +189,7 @@
 </head>
 <body>
   <header>
-    <h1>매칭데이 GPT</h1>
+    <h1>매칭데이 GPTS</h1>
     <label class="theme-switch">
       <input type="checkbox" id="theme-toggle" />
       <span class="slider"></span>
@@ -174,13 +203,13 @@
       <div class="category-title">소주제: 태도 및 강점</div>
       <div class="gpt-card">
         <p>나의 장점 v1.3</p>
-        <a href="https://chatgpt.com/g/g-6801xxxxxx-na-ui-jangjeom-v1-3">
+        <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-3">
           <button class="btn">이동하기</button>
         </a>
       </div>
       <div class="gpt-card">
         <p>커뮤니케이션 능력 v1.3</p>
-        <a href="https://chatgpt.com/g/g-6802xxxxxx-communication-neungryeok-v1-3">
+        <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-3">
           <button class="btn">이동하기</button>
         </a>
       </div>
