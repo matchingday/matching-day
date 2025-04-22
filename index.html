@@ -2,15 +2,14 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <!-- 반드시 viewport 선언 -->
+  <!-- 모바일 반응형을 위한 viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career GPTS</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     /* ─── Prevent horizontal overflow ─── */
     html, body {
-      margin: 0; padding: 0;
-      overflow-x: hidden;
+      margin: 0; padding: 0; overflow-x: hidden;
     }
 
     /* ─── 테마 변수 정의 ─── */
@@ -49,7 +48,7 @@
     header {
       position: relative;
       display: flex;
-      justify-content: flex-end;  /* 토글은 우측 */
+      justify-content: flex-end;
       align-items: center;
       padding: 30px 20px;
       background: var(--header-bg);
@@ -104,7 +103,7 @@
       margin: 40px auto;
       padding: 0 24px;
     }
-    /* PC: 3열 + 4번째 박스 2span */
+    /* PC: 3열 + 4번째 박스 2열 span */
     @media (min-width: 900px) {
       .container { grid-template-columns: repeat(3,1fr); }
       .container .category-box:nth-child(4) {
@@ -112,9 +111,9 @@
       }
     }
 
-    /* ─── 모바일(≤600px) ─── */
+    /* ─── 모바일(≤600px): 1열 ─── */
     @media (max-width: 600px) {
-      /* 헤더 한 줄 고정 */
+      /* 헤더 가로 한 줄 고정 */
       header {
         flex-wrap: nowrap;
         justify-content: space-between;
@@ -122,21 +121,18 @@
       }
       header h1 {
         position: static; transform: none;
-        order: 1; flex: 1;
-        white-space: nowrap;
+        flex: 1; white-space: nowrap;
         overflow: hidden; text-overflow: ellipsis;
         font-size: 1.6rem; text-align: left;
       }
-      .theme-switch {
-        order: 2; margin: 0; flex: none;
-      }
+      .theme-switch { margin: 0; flex: none; }
 
-      /* 2열 그리드로 변경 */
+      /* 컨테이너 1열로 변경 */
       .container {
-        grid-template-columns: repeat(2,1fr) !important;
+        grid-template-columns: 1fr !important;
         gap: 12px;
         padding: 0 8px;
-        margin: 20px auto; 
+        margin: 20px auto;
       }
       /* span 해제 */
       .container .category-box:nth-child(4) {
@@ -163,36 +159,28 @@
     }
     .category-box:hover { transform: translateY(-4px); }
     .category-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 24px;
+      font-size: 1.2rem; font-weight: 600;
+      margin-bottom: 24px; text-align: center;
       color: var(--text-color);
-      text-align: center;
     }
     .gpt-card {
       background: var(--frost);
-      border-radius: 12px;
-      width: 100%; padding: 16px;
-      display: flex; flex-direction: column;
-      align-items: center;
-      margin-bottom: 16px;
-      transition: background .3s;
+      border-radius: 12px; width: 100%;
+      padding: 16px; display: flex;
+      flex-direction: column; align-items: center;
+      margin-bottom: 16px; transition: background .3s;
     }
     .gpt-card:last-child { margin-bottom: 0; }
     .gpt-card p {
       color: var(--text-color);
-      margin-bottom: 12px;
-      font-size: 1rem;
+      margin-bottom: 12px; font-size: 1rem;
     }
     .btn {
       background: var(--btn-bg);
       color: var(--btn-color);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: .9rem;
-      cursor: pointer;
-      transition: background .3s;
+      border: none; padding: 8px 16px;
+      border-radius: 8px; font-size: .9rem;
+      cursor: pointer; transition: background .3s;
     }
     .btn:hover { opacity: .9; }
 
