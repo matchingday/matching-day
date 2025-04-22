@@ -38,19 +38,30 @@
       flex-direction: column;
       transition: background 0.3s, color 0.3s;
     }
- /* ─── header 레이아웃을 flex 로 바꿔서 중앙 정렬 + 스위치 우측 배치 ─── */
+/* ─── 제목은 중앙, 토글은 오른쪽 ─── */
 header {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;   /* 제목은 가운데 */
+  justify-content: flex-end;   /* flex-end로 토글만 오른쪽으로 */
   align-items: center;
-  gap: 8px;                  /* 제목과 스위치 사이 여백 */
+  padding: 30px 20px;
   background: var(--header-bg);
   backdrop-filter: blur(10px);
-  padding: 30px 20px;
   box-shadow: 0 4px 12px var(--card-shadow);
-  position: relative;
 }
+
+/* h1을 절대 위치로 뺀 뒤 가로 중앙 정렬 */
+header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+
 
     header h1 {
       font-size: 2rem;
@@ -67,7 +78,6 @@ header {
   cursor: pointer;
   user-select: none;
   font-size: 0.9rem;
-  margin-left: auto;      /* 헤더 안에서 우측 끝으로 밀기 */
 }
 
     .theme-switch input { display: none; }
@@ -111,12 +121,15 @@ header {
 /* ─── 모바일(≤600px) 전용 ─── */
 @media (max-width: 600px) {
   header {
-    justify-content: center;
+    justify-content: center;  /* 토글도 아래로 내려가기 전까지 중앙 */
   }
   header h1 {
-    order: 1;
+    position: static;        /* 절대 위치 해제 */
+    transform: none;
     width: 100%;
+    text-align: center;
     font-size: 1.8rem;
+    order: 1;
   }
   .theme-switch {
     order: 2;
