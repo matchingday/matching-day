@@ -114,17 +114,29 @@
     /* ─── 모바일(≤600px): 1열 ─── */
     @media (max-width: 600px) {
       /* 헤더 가로 한 줄 고정 */
-      header {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        padding: 16px 12px;
-      }
-      header h1 {
-        position: static; transform: none;
-        flex: 1; white-space: nowrap;
-        overflow: hidden; text-overflow: ellipsis;
-        font-size: 1.6rem; text-align: left;
-      }
+  header {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 12px;
+  }
+  header h1 {
+    position: static;
+    transform: none;
+    order: 1;
+    flex: 1;
+    white-space: normal;      /* 줄바꿈 허용 */
+    overflow: visible;        /* 잘림 해제 */
+    text-overflow: clip;
+    font-size: 1.6rem;
+    text-align: center;       /* 가운데 정렬 */
+    margin: 0;
+  }
+  .theme-switch {
+    order: 2;
+    margin: 0;
+    flex: none;
+  }
       .theme-switch { margin: 0; flex: none; }
 
       /* 컨테이너 1열로 변경 */
