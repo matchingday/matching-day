@@ -55,15 +55,18 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px var(--card-shadow);
     }
-    header h1 {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-color);
-      margin: 0;
-    }
+  header h1 {
+    position: static;
+    transform: none;
+    order: 1;
+    flex: 1 1 auto;           /* 공간에 맞춰 축소 허용 */
+    white-space: nowrap;      /* 줄바꿈 금지 */
+    overflow: visible;        /* 숨김 해제 */
+    text-overflow: clip;      /* 말줄임 해제 */
+    font-size: 1.4rem;        /* 화면에 딱 맞게 글자 크기 조절 */
+    margin: 0;
+    text-align: left;
+  }
 
     /* ─── 다크모드 토글 ─── */
     .theme-switch {
