@@ -113,29 +113,28 @@
 
     /* ─── 모바일(≤600px) ─── */
     @media (max-width: 600px) {
-      /* 헤더 한 줄 고정 */
+      /* 헤더: 세로 레이아웃, 제목 위, 토글 아래 */
       header {
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         padding: 16px 12px;
       }
       header h1 {
         position: static;
         transform: none;
-        order: 1;
-        flex: 1 1 auto;
-        white-space: nowrap;      /* 한 줄로 고정 */
-        overflow: visible;        /* 잘림 해제 */
-        text-overflow: clip;      /* 말줄임 해제 */
-        font-size: 1.4rem;        /* 필요 시 1.3rem~1.2rem 조정 */
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        font-size: 1.6rem;
         margin: 0;
-        text-align: left;
+        text-align: center;
       }
       .theme-switch {
+        margin-top: 8px;
         order: 2;
-        margin: 0;
         flex: none;
+        text-align: center;
       }
 
       /* 컨테이너 1열로 변경 */
