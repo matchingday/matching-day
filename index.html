@@ -38,14 +38,20 @@
       flex-direction: column;
       transition: background 0.3s, color 0.3s;
     }
-    header {
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--card-shadow);
-      position: relative;
-    }
+ /* ─── header 레이아웃을 flex 로 바꿔서 중앙 정렬 + 스위치 우측 배치 ─── */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* 제목은 가운데 */
+  align-items: center;
+  gap: 8px;                  /* 제목과 스위치 사이 여백 */
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  position: relative;
+}
+
     header h1 {
       font-size: 2rem;
       font-weight: 700;
@@ -53,16 +59,17 @@
     }
 
     /* ─── 다크모드 토글 ─── */
-    .theme-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-      font-size: 0.9rem;
-    }
+/* ─── 토글 스위치를 문서 흐름에 따라 배치 ─── */
+.theme-switch {
+  position: static;       /* 절대 위치 제거 */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  margin-left: auto;      /* 헤더 안에서 우측 끝으로 밀기 */
+}
+
     .theme-switch input { display: none; }
     .theme-switch .slider {
       width: 40px; height: 20px;
@@ -101,15 +108,24 @@
       grid-column: span 2;
     }
 
-    /* ─── 반응형: 모바일에서는 1열 ─── */
-    @media (max-width: 600px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-      .container .category-box:nth-child(4) {
-        grid-column: auto;
-      }
-    }
+/* ─── 모바일(≤600px) 전용 ─── */
+@media (max-width: 600px) {
+  header {
+    justify-content: center;
+  }
+  header h1 {
+    order: 1;
+    width: 100%;
+    font-size: 1.8rem;
+  }
+  .theme-switch {
+    order: 2;
+    width: 100%;
+    margin: 10px 0 0;
+    text-align: center;
+  }
+}
+
 
     /* ─── 카드 스타일 ─── */
     .category-box {
