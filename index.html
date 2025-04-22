@@ -104,19 +104,29 @@ header h1 {
       color: var(--text-color);
     }
 
-    /* ─── Grid 레이아웃 ─── */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1280px;
-      margin: 40px auto;
-      padding: 0 24px;
-    }
-    /* 4번째 박스만 2열 span */
-    .container .category-box:nth-child(4) {
-      grid-column: span 2;
-    }
+   /* ─── 반응형 Grid (auto-fit + minmax) ─── */
+.container {
+  display: grid;
+  /* 최소 280px, 최대 1fr씩 채우기. fit 가능한 만큼 열 생성 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+/* 데스크탑용: 3열 고정 + 4번째 박스만 2span */
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .container .category-box:nth-child(4) {
+    grid-column: span 2;
+  }
+}
+
+/* (이전 모바일 오버라이드는 제거해주세요) */
+
 
 /* ─── 모바일(≤600px) 전용 ─── */
 @media (max-width: 600px) {
