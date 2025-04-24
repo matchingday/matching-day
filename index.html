@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SOL Career Automation</title>
   <style>
-    /* ─── CSS 변수 (라이트/다크 공용) ─── */
     :root {
       --bg-color: #f0f4f8;
       --header-bg: rgba(255,255,255,0.8);
@@ -16,7 +15,7 @@
       --btn-bg: #0066ff;
       --btn-color: #ffffff;
     }
-    /* ─── 다크 모드용 변수 재정의 ─── */
+
     body.dark {
       --bg-color: #121212;
       --header-bg: rgba(20,20,20,0.8);
@@ -25,138 +24,167 @@
       --card-shadow: rgba(0,0,0,0.5);
       --text-color: #eeeeee;
       --btn-bg: #2196f3;
-      --btn-color: #ffffff;
     }
 
-    /* ─── 기본 레이아웃 ─── */
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       background: var(--bg-color);
       color: var(--text-color);
-      transition: background .3s, color .3s;
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
     }
+
     header {
-      position: relative;
       display: flex;
-      justify-content: flex-end;
+      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      padding: 30px 20px;
+      padding: 1rem 2rem;
       background: var(--header-bg);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px var(--card-shadow);
-    }
-    header h1 {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 0;
-      color: var(--text-color);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    /* ─── 다크모드 토글 ─── */
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-color);
+      flex: 1;
+    }
+
     .theme-switch {
       display: flex;
       align-items: center;
+      font-size: 0.9rem;
       cursor: pointer;
-      user-select: none;
-      font-size: .9rem;
     }
-    .theme-switch input { display: none; }
+
+    .theme-switch input {
+      display: none;
+    }
+
     .theme-switch .slider {
-      width: 40px; height: 20px;
+      width: 40px;
+      height: 20px;
       background: #bbb;
       border-radius: 10px;
       margin-right: 8px;
       position: relative;
       transition: background .3s;
     }
+
     .theme-switch .slider::after {
       content: '';
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       background: #fff;
       border-radius: 50%;
-      position: absolute; top:2px; left:2px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
       transition: transform .3s;
     }
+
     .theme-switch input:checked + .slider {
       background: var(--btn-bg);
     }
+
     .theme-switch input:checked + .slider::after {
       transform: translateX(20px);
     }
-    .theme-switch span { color: var(--text-color); }
 
-    /* ─── Grid 레이아웃 (항상 3열) ─── */
     .container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 40px auto;
-      padding: 0 24px;
-    }
-    /* 4번째 박스만 2열 차지 */
-    .container .category-box:nth-child(4) {
-      grid-column: span 2;
+      padding: 0 16px;
     }
 
-    /* ─── 카드 스타일 ─── */
     .category-box {
       background: var(--card-bg);
-      border-radius: 20px;
+      border-radius: 16px;
       box-shadow: 0 10px 24px var(--card-shadow);
+      padding: 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform .3s;
-      padding: 24px;
-      min-height: 360px; /* 박스 높이 통일 */
+      min-height: 360px;
+      transition: transform .3s ease;
     }
-    .category-box:hover { transform: translateY(-4px); }
+
+    .category-box:hover {
+      transform: translateY(-4px);
+    }
+
     .category-title {
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 24px;
-      text-align: center;
       color: var(--text-color);
+      text-align: center;
     }
+
     .gpt-card {
       background: var(--frost);
       border-radius: 12px;
-      width: 240px;
+      width: 100%;
+      max-width: 240px;
       height: 120px;
-      margin: auto;
+      margin-bottom: 16px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: background .3s;
+      transition: background 0.3s;
     }
+
     .gpt-card p {
       color: var(--text-color);
-      margin-bottom: 12px;
       font-size: 1rem;
+      margin-bottom: 12px;
     }
+
     .btn {
       background: var(--btn-bg);
       color: var(--btn-color);
       border: none;
       padding: 8px 16px;
       border-radius: 8px;
-      font-size: .9rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: background .3s;
+      transition: opacity 0.3s;
     }
-    .btn:hover { opacity: .9; }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: .85rem;
+      font-size: 0.85rem;
       color: var(--text-color);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header h1 {
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -171,64 +199,47 @@
   </header>
 
   <div class="container">
-    <!-- 1. 태도 및 강점 -->
     <div class="category-box">
       <div class="category-title">소주제: 태도 및 강점</div>
       <div class="gpt-card">
         <p>나의 장점 v1.3</p>
-        <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-67ef2a596ab48191bf098a0ac5f5eb5c-nayi-jangjeom-v1-3"><button class="btn">이동하기</button></a>
       </div>
       <div class="gpt-card">
         <p>커뮤니케이션 능력 v1.3</p>
-        <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-68008817fd488191a5a700508e3686e8-keomyunikeisyeon-v-1-3"><button class="btn">이동하기</button></a>
       </div>
     </div>
 
-    <!-- 2. 기술 역량 -->
     <div class="category-box">
       <div class="category-title">소주제: 기술 역량</div>
       <div class="gpt-card">
         <p>기술적 강점 v1.3</p>
-        <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-6801d9673f748191950568742db4759d-gisuljeog-gangjeom-v1-3"><button class="btn">이동하기</button></a>
       </div>
     </div>
 
-    <!-- 3. 지원 동기 -->
     <div class="category-box">
       <div class="category-title">소주제: 지원 동기</div>
       <div class="gpt-card">
         <p>지원 동기 및 포부 v1.3</p>
-        <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-6800a9eeaa8c81918397072e2c159813-jigmu-jiweon-donggi-v-1-3"><button class="btn">이동하기</button></a>
       </div>
     </div>
 
-    <!-- 4. 이력서·자기소개서·포트폴리오 분석 -->
     <div class="category-box">
       <div class="category-title">이력서·자기소개서·포트폴리오 분석</div>
       <div class="gpt-card">
         <p>커리어 컨설턴트 v1.3</p>
-        <a href="https://chatgpt.com/g/g-6806f5c6c09081919b91e905a81b2580-keorieo-keonseolteonteu-v1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-6806f5c6c09081919b91e905a81b2580-keorieo-keonseolteonteu-v1-3"><button class="btn">이동하기</button></a>
       </div>
     </div>
 
-    <!-- 5. 잡플래닛 기업 분석 -->
     <div class="category-box">
       <div class="category-title">잡플래닛 기업 분석</div>
       <div class="gpt-card">
         <p>기업 분석 v1.3</p>
-        <a href="https://chatgpt.com/g/g-67edee863788819195fcb8b8e72d63d1-gieob-bunseog-v1-3">
-          <button class="btn">이동하기</button>
-        </a>
+        <a href="https://chatgpt.com/g/g-67edee863788819195fcb8b8e72d63d1-gieob-bunseog-v1-3"><button class="btn">이동하기</button></a>
       </div>
     </div>
   </div>
@@ -241,10 +252,7 @@
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
     const saved = localStorage.getItem('theme');
-    if (
-      saved === 'dark' ||
-      (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark');
       toggle.checked = true;
     }
